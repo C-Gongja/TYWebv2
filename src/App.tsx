@@ -18,7 +18,7 @@ function App() {
 			{isLoading ? (
 				<LoadingScreen />
 			) : (
-				<BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/TYWebv2' : ''}>
+				<BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/TYWebv2/' : ''}>
 					<Routes>
 						<Route path="/" element={<Layout />}>
 							<Route index element={<MainPage />} />

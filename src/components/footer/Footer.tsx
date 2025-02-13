@@ -4,7 +4,7 @@ export default function Footer() {
 			<div className=" md:text-2xl flex justify-center items-center">&copy; Taeyoon Kim</div>
 			<a href="#" className="">
 				<img
-					src="/assest/images/logo/logo-color.PNG"
+					src="./assest/images/logo/logo-color.PNG"
 					// width={70}
 					height={"auto"}
 					alt="logo"

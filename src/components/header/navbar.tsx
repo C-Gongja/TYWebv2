@@ -76,7 +76,7 @@ const Navbar = () => {
 					${isOpen || visibilityAnimation ? "rounded-t-2xl" : "rounded-2xl"}`}>
 						{/* Logo */}
 						<div className="md:ml-5 p-3">
-							<a href="/" className="">
+							<Link to="/" className="">
 								<img
 									src="./assest/images/logo/logo-color.PNG"
 									// width={50}
@@ -84,7 +84,7 @@ const Navbar = () => {
 									alt="logo"
 									className="select-none w-[40px] md:w-[50px]"
 								/>
-							</a>
+							</Link>
 						</div>
 
 						{/* Hamburger Icon (Mobile) */}
