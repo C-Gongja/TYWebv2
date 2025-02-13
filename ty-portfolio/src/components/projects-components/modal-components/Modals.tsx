@@ -1,14 +1,22 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { Project } from "../ProjectList";
 
-function ModalTitle({ project, onClose }) {
+interface ModalProps {
+	project: Project;
+	onClose?: () => void;
+}
+
+function ModalTitle({ project, onClose }: ModalProps) {
 	return (
 		<div className="">
 			<div className="px-[20px] flex flex-row gap-5 items-center">
-				<img
-					src={project.image}
-					alt={project.title}
-					className="w-[60px] h-[60px] rounded-full shadow-lg"
-				/>
+				{project.image && (
+					<img
+						src={project.image}
+						alt={project.title}
+						className="w-[60px] h-[60px] rounded-full shadow-lg"
+					/>
+				)}
 				<h2 className="text-3xl md:text-2xl lg:text-4xl font-bold text-black">{project.modaltitle}</h2>
 				<a href={project.githublink} target="_blank" className="hidden md:block">
 					<img
@@ -28,7 +36,7 @@ function ModalTitle({ project, onClose }) {
 	);
 }
 
-function ModalBody({ project }) {
+function ModalBody({ project }: ModalProps) {
 	return (
 		<div className="p-2 md:p-6 text-black max-w-full mx-auto">
 			{/* Intro */}
@@ -67,7 +75,7 @@ function ModalBody({ project }) {
 	);
 }
 
-function Tags({ project }) {
+function Tags({ project }: ModalProps) {
 	return (
 		<div className="flex flex-wrap justify-center gap-2 m-4">
 			{project.technologies.map((tech) => (
@@ -79,7 +87,7 @@ function Tags({ project }) {
 	);
 }
 
-function Demo({ project }) {
+function Demo({ project }: ModalProps) {
 	return (
 		< >
 			{project.attach && project.attach.length > 0 && (
@@ -90,19 +98,23 @@ function Demo({ project }) {
 					</div>
 				))
 			)}
-
-			<div>
-				<h1 className="text-black text-xl">Demo</h1>
-				<video className="rounded-xl cursor-pointer" controls>
-					<source src={project.demo} type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
-			</div>
+			{project.demo.length > 0 && (
+				<div>
+					<h1 className="text-black text-xl">Demo</h1>
+					{project.demo.map((demovid, index) => (
+						<video className="rounded-xl cursor-pointer" controls>
+							<source key={index} src={demovid} type="video/mp4" />
+							Your browser does not support the video tag.
+						</video>
+					))}
+				</div>
+			)}
 		</>
 	);
 }
 
-function ProjectModal({ project, onClose }) {
+function ProjectModal({ project, onClose }: ModalProps) {
+	console.log("modal active")
 	if (!project) return null;
 
 	// eslint-disable-next-line react-hooks/rules-of-hooks

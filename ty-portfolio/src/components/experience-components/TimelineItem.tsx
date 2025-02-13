@@ -1,13 +1,5 @@
-import React from "react";
-
-interface Experience {
-	companyImg: string;
-	jobTitle: string;
-	company: string;
-	jobType: string;
-	duration: string;
-	description: string[];
-}
+import { } from "react";
+import { Experience } from "./ExperienceList";
 
 interface ExperienceProps {
 	Experience: Experience;

@@ -15,7 +15,7 @@ export default function AnimationWrapper({
 	const ref = useRef<HTMLDivElement>(null);
 	const isInView = useInView(ref, { once: true });
 
-	const animations: Record<AnimationWrapperProps["animationType"], React.CSSProperties> = {
+	const animations: Record<NonNullable<AnimationWrapperProps["animationType"]>, React.CSSProperties> = {
 		translateXFromRight: {
 			transform: isInView ? "none" : "translateX(100vw)",
 			opacity: isInView ? 1 : 0,
