@@ -19,9 +19,11 @@ export default function Dropdown({ children, isOpen, visibilityAnimation, setVis
 			setRepeat(null);
 			setVisibilityAnimation(true);
 		} else {
-			setRepeat(setTimeout(() => {
-				setVisibilityAnimation(false);
-			}, 400));
+			setRepeat(
+				window.setTimeout(() => {
+					setVisibilityAnimation(false);
+				}, 400)
+			);
 		}
 	}, [isOpen]);
 
