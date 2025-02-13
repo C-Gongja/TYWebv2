@@ -11,7 +11,6 @@ export default function Dropdown({ children, isOpen, visibilityAnimation, setVis
 	const [repeat, setRepeat] = useState<number | null>(null);
 
 	useEffect(() => {
-		{/* ← add */ }
 		if (isOpen) {
 			if (repeat !== null) {
 				clearTimeout(repeat);

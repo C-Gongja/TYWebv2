@@ -15,10 +15,11 @@ const router = createBrowserRouter([
 				element: <MainPage />,
 			},
 			{
-				path: "/resume",
+				path: "resume",
 				element: <Resume />,
 			},
 		],
+		// basename: process.env.NODE_ENV === 'production' ? '/TYWebv2' : '/',
 	},
 ]);
 
@@ -37,17 +38,12 @@ function App() {
 		<body
 			className="font-urbanist w-full h-scree bg-violet-900 scrollbar-hidden"
 		>
-			<div className="">
-				{/* <GlobalStyles /> */}
-				{isLoading ? (
-					<LoadingScreen />
-				) : (
-					<RouterProvider
-						router={router}
-						basename={process.env.NODE_ENV === 'production' ? '/TYWebv2' : '/'}
-					/>
-				)}
-			</div >
+			<>
+				<div className="">
+					{/* <GlobalStyles /> */}
+					{isLoading ? <LoadingScreen /> : <RouterProvider router={router} />}
+				</div >
+			</>
 		</body >
 	);
 }
