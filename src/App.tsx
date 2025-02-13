@@ -8,7 +8,6 @@ import Resume from './routes/resume';
 const router = createBrowserRouter([
 	{
 		path: "/",
-		// element: <ProtectedRoute><Layout /></ProtectedRoute>,
 		element: <Layout />,
 		children: [
 			{
@@ -19,12 +18,15 @@ const router = createBrowserRouter([
 				path: "/resume",
 				element: <Resume />,
 			},
-		]
+		],
 	},
 ]);
 
 function App() {
 	const [isLoading, setIsLoading] = useState(true);
+	useEffect(() => {
+		console.log(process.env.NODE_ENV);
+	});
 
 	useEffect(() => {
 		// init();
@@ -35,12 +37,17 @@ function App() {
 		<body
 			className="font-urbanist w-full h-scree bg-violet-900 scrollbar-hidden"
 		>
-			<>
-				<div className="">
-					{/* <GlobalStyles /> */}
-					{isLoading ? <LoadingScreen /> : <RouterProvider router={router} />}
-				</div >
-			</>
+			<div className="">
+				{/* <GlobalStyles /> */}
+				{isLoading ? (
+					<LoadingScreen />
+				) : (
+					<RouterProvider
+						router={router}
+						basename={process.env.NODE_ENV === 'production' ? '/TYWebv2' : '/'}
+					/>
+				)}
+			</div >
 		</body >
 	);
 }
