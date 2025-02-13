@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { HeaderDropdown } from "./HeaderDropDown";
 import { personalLinks } from "../../routes/externalRoutes/ExternalRoutes";
 import ProjectModal from "../projects-components/modal-components/Modals";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Dropdown from "./MobileNavbar";
 import { Project } from "../projects-components/ProjectList";
 
@@ -64,7 +64,7 @@ const Navbar = () => {
 	}, [location.pathname]);
 
 	const getLinkClass = (targetId: string) => {
-		if (location.pathname === "resume") return targetId === "resume" ? "text-violet-300" : "";
+		if (location.pathname === "/resume") return targetId === "resume" ? "text-violet-300" : "";
 		return activeSection === targetId ? "text-violet-300" : "";
 	};
 
@@ -112,22 +112,24 @@ const Navbar = () => {
 						{/* Links (Desktop) */}
 						<div className="hidden lg:flex gap-1 lg:gap-1 text-white/25 transition-all duration-300 ease-in-out">
 							<button className="transition transform hover:text-violet-100 p-6">
-								<a href="#home" className={`text-xl ${getLinkClass("home")}`}>Home</a>
+								<Link to="/#home" className={`text-xl ${getLinkClass("home")}`}>Home</Link>
 							</button>
 							<button className="transition transform hover:text-violet-100 p-6">
-								<a href="#experience" className={`text-xl ${getLinkClass("experience")}`}>Experience</a>
+								<Link to="/#experience" className={`text-xl ${getLinkClass("experience")}`}>Experience</Link>
+								{/* <a href="#experience" className={`text-xl ${getLinkClass("experience")}`}>Experience</a> */}
 							</button>
 							<div className="dropdown dropdown-hover transition transform hover:text-violet-100 p-6">
-								<a href="#projects" className={`text-xl ${getLinkClass("projects")}`}>Projects</a>
+								<Link to="/#projects" className={`text-xl ${getLinkClass("projects")}`}>Projects</Link>
 								<div className="absolute top-full left-2">
 									<HeaderDropdown handleProjectClick={handleProjectClick} />
 								</div>
 							</div>
 							<button className="transition transform hover:text-violet-100 p-6">
-								<a href="resume" className={`text-xl ${getLinkClass("resume")}`}>Resume</a>
+								<Link to="/resume" className={`text-xl ${getLinkClass("resume")}`}>Resume</Link>
+								{/* <a href="resume" className={`text-xl ${getLinkClass("resume")}`}>Resume</a> */}
 							</button>
 							<button className="transition transform hover:text-violet-100 p-6">
-								<a href="#contact" className={`text-xl ${getLinkClass("contact")}`}>Contact</a>
+								<Link to="/#contact" className={`text-xl ${getLinkClass("contact")}`}>Contact</Link>
 							</button>
 						</div>
 						<div className="hidden lg:flex">
@@ -135,10 +137,10 @@ const Navbar = () => {
 								{personalLinks.map((link, index) => (
 									<li key={index} className="relative  w-[50px] h-[50px] flex items-center justify-center rounded-xl bg-transparent transition-all duration-200 ease-in-out opacity-25
 														hover:opacity-100 hover:bg-[#7165ed] group">
-										<a href={link.link} target={link.appName === "CV" ? "_self" : "_blank"}
+										<Link to={link.link} target={link.appName === "CV" ? "_self" : "_blank"}
 											className="w-[70%] h-[70%] flex items-center justify-center z-10 ">
 											<img src={link.icon} alt="GitHub Icon" className="mb-1" />
-										</a>
+										</Link>
 										<span className="absolute inset-0 rounded-xl opacity-0 shadow-[0_0_0_2px_#4837ff] transition-all duration-200 
 														 group-hover:opacity-100 group-hover:scale-110"></span>
 									</li>
@@ -150,26 +152,26 @@ const Navbar = () => {
 					{/* Mobile Menu (Hamburger) */}
 					<Dropdown isOpen={isOpen} visibilityAnimation={visibilityAnimation} setVisibilityAnimation={setVisibilityAnimation}>
 						<li className="py-2">
-							<a href="#home" onClick={() => setIsOpen(!isOpen)} className={`text-[25px] md:text-[30px] ${getLinkClass("home")}`}>Home</a>
+							<Link to="/#home" onClick={() => setIsOpen(!isOpen)} className={`text-[25px] md:text-[30px] ${getLinkClass("home")}`}>Home</Link>
 						</li>
 						<li className="py-2">
-							<a href="#experience" onClick={() => setIsOpen(!isOpen)} className={`text-[25px] md:text-[30px] ${getLinkClass("experience")}`}>Experience</a>
+							<Link to="/#experience" onClick={() => setIsOpen(!isOpen)} className={`text-[25px] md:text-[30px] ${getLinkClass("experience")}`}>Experience</Link>
 						</li>
 						<li className="py-2">
-							<a href="#projects" onClick={() => setIsOpen(!isOpen)} className={`text-[25px] md:text-[30px] ${getLinkClass("projects")}`}>Projects</a>
+							<Link to="/#projects" onClick={() => setIsOpen(!isOpen)} className={`text-[25px] md:text-[30px] ${getLinkClass("projects")}`}>Projects</Link>
 						</li>
 						<li className="py-2">
-							<a href="resume" onClick={() => setIsOpen(!isOpen)} className={`text-[25px] md:text-[30px] ${getLinkClass("resume")}`}>Resume</a>
+							<Link to="/resume" onClick={() => setIsOpen(!isOpen)} className={`text-[25px] md:text-[30px] ${getLinkClass("resume")}`}>Resume</Link>
 						</li>
 						<li className="py-2">
-							<a href="#contact" onClick={() => setIsOpen(!isOpen)} className={`text-[25px] md:text-[30px] ${getLinkClass("contact")}`}>Contact</a>
+							<Link to="/#contact" onClick={() => setIsOpen(!isOpen)} className={`text-[25px] md:text-[30px] ${getLinkClass("contact")}`}>Contact</Link>
 						</li>
 						<li className="flex justify-center space-x-4 py-2">
 							{personalLinks.map((link, index) => (
 								<div key={index} className="relative w-[60px] h-[60px] md:w-[90px] md:h-[90px] flex items-center justify-center rounded-xl bg-transparent transition-all duration-200 ease-in-out opacity-80">
-									<a href={link.link} target={link.appName === "CV" ? "_self" : "_blank"} className="w-[70%] h-[70%] flex items-center justify-center z-10">
+									<Link to={link.link} target={link.appName === "CV" ? "_self" : "_blank"} className="w-[70%] h-[70%] flex items-center justify-center z-10">
 										<img src={link.icon} alt="Icon" className="mb-1" />
-									</a>
+									</Link>
 								</div>
 							))}
 						</li>
