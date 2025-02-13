@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import LoadingScreen from './components/loading-screen';
 import Layout from './components/layout';
 import MainPage from './routes/main-page';
@@ -35,14 +35,14 @@ function App() {
 			{isLoading ? (
 				<LoadingScreen />
 			) : (
-				<BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/TYWebv2' : '/'}>
+				<HashRouter basename={process.env.NODE_ENV === 'production' ? '/TYWebv2' : '/'}>
 					<Routes>
 						<Route path="/" element={<Layout />}>
 							<Route index element={<MainPage />} />
 							<Route path="resume" element={<Resume />} />
 						</Route>
 					</Routes>
-				</BrowserRouter>
+				</HashRouter>
 			)}
 		</body>
 	);
