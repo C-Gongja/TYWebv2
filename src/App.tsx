@@ -14,11 +14,11 @@ function App() {
 	}, []);
 
 	return (
-		<body className="font-urbanist w-full h-scree bg-violet-900 scrollbar-hidden">
+		<div className="font-urbanist w-full h-screen bg-violet-900 scrollbar-hidden">
 			{isLoading ? (
 				<LoadingScreen />
 			) : (
-				<BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/TYWebv2' : '/'}>
+				<BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/TYWebv2' : ''}>
 					<Routes>
 						<Route path="/" element={<Layout />}>
 							<Route index element={<MainPage />} />
@@ -27,7 +27,7 @@ function App() {
 					</Routes>
 				</BrowserRouter>
 			)}
-		</body>
+		</div>
 	);
 }
 
