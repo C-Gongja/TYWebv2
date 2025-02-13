@@ -55,7 +55,7 @@ export const ExperienceList = [
 		company: "Freelancer",
 		jobType: "Customizable 3D Character Page",
 		year: "2025",
-		duration: "Dec 2024 - Present",
+		duration: "Nov 2024 - Present",
 		description: [
 			"Developing a page that provides customizable 3d character for user",
 			"Updates character data to existing user data",
