@@ -7,9 +7,6 @@ import Resume from './routes/resume';
 
 function App() {
 	const [isLoading, setIsLoading] = useState(true);
-	useEffect(() => {
-		console.log(process.env.NODE_ENV);
-	});
 
 	useEffect(() => {
 		// init();
