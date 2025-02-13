@@ -133,7 +133,7 @@ const MobileTimelineItem = ({ item }: MobileTimeLineProps) => {
 			<div className="mt-1">
 				<h1 className="text-[35px] text-white">{item.jobTitle}</h1>
 				<h1 className="text-[20px] text-white"> {item.company} | {item.jobType}</h1>
-				<h1 className="text-[18px] text-gray">{item.duration}</h1>
+				<h1 className="text-[18px] text-gray-300">{item.duration}</h1>
 				<div className="mt-2">
 					{item.description.map((item, index) => {
 						return (
