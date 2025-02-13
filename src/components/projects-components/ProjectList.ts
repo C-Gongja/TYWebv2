@@ -107,10 +107,10 @@ export const projects = [
 		attach: [
 			{
 				title: "Hardware",
-				src: "/assest/files/projects/f1/f1_hardware.png"
+				src: "./assest/files/projects/f1/f1_hardware.png"
 			}
 		],
-		demo: ["/assest/files/projects/f1/f1_demo.mp4"]
+		demo: ["./assest/files/projects/f1/f1_demo.mp4"]
 	},
 	{
 		id: 1,
@@ -138,7 +138,7 @@ export const projects = [
 		},
 		githublink: "https://github.com/C-Gongja/connect_4_ai",
 		attach: [],
-		demo: ["/assest/files/projects/c4/c4_demo.mp4"]
+		demo: ["./assest/files/projects/c4/c4_demo.mp4"]
 	},
 	{
 		id: 2,
@@ -193,7 +193,7 @@ export const projects = [
 		},
 		githublink: "https://github.com/C-Gongja/hgd_youtube_controller",
 		attach: [],
-		demo: ["/assest/files/projects/hgr/hgr_youtube_controller_demo.mp4"]
+		demo: ["./assest/files/projects/hgr/hgr_youtube_controller_demo.mp4"]
 	},
 	{
 		id: 3,
@@ -225,7 +225,7 @@ export const projects = [
 		},
 		githublink: "https://github.com/C-Gongja/Twitter-Clone",
 		attach: [],
-		demo: ["/assest/files/projects/X_clone/X_clone_demo.mp4"]
+		demo: ["./assest/files/projects/X_clone/X_clone_demo.mp4"]
 	},
 	{
 		id: 4,
@@ -260,7 +260,7 @@ export const projects = [
 		},
 		githublink: "https://github.com/C-Gongja/Enigma-Machine",
 		attach: [],
-		demo: ["/assest/files/projects/enigma/Enigma_demo.mov"]
+		demo: ["./assest/files/projects/enigma/Enigma_demo.mov"]
 	},
 	{
 		id: 5,

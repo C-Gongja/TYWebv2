@@ -78,7 +78,7 @@ const Navbar = () => {
 						<div className="md:ml-5 p-3">
 							<a href="/" className="">
 								<img
-									src="/assest/images/logo/logo-color.PNG"
+									src="./assest/images/logo/logo-color.PNG"
 									// width={50}
 									height={"auto"}
 									alt="logo"
