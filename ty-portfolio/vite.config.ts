@@ -7,4 +7,5 @@ export default defineConfig({
 	css: {
 		postcss: "./postcss.config.js",  // PostCSS 설정 경로 추가
 	},
+	base: "/TYWebv2/"
 })

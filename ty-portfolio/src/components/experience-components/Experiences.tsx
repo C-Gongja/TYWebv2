@@ -40,8 +40,7 @@ const Experiences = () => {
 						{isMobile ? null : <HorizontalLine />}
 					</AnimationWrapper>
 
-					<div className=" 
-				lg:ml-20 lg:w-[70%] lg:relative lg:flex lg:justify-between">
+					<div className="lg:ml-20 lg:w-[70%] lg:relative lg:flex lg:justify-between">
 						{isMobile ? (
 							[...ExperienceList].reverse().map((item, index) => (
 								<AnimationWrapper animationType={"scale"} delay="0.3s">
