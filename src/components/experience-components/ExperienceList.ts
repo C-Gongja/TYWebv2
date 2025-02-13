@@ -11,7 +11,7 @@ export interface Experience {
 
 export const ExperienceList = [
 	{
-		companyImg: "/assest/images/logo/logo-color.PNG",
+		companyImg: "./assest/images/logo/logo-color.PNG",
 		jobTitle: "Graphic Designer",
 		company: "Freelancer",
 		jobType: "Design Logo and Graphics for products",
@@ -23,7 +23,7 @@ export const ExperienceList = [
 		],
 	},
 	{
-		companyImg: "/assest/files/experience/ecocar/logo.jpg",
+		companyImg: "./assest/files/experience/ecocar/logo.jpg",
 		jobTitle: "V2X-Radio Engineer ",
 		company: "Eco Car Davis",
 		jobType: "Research Assistance",
@@ -37,7 +37,7 @@ export const ExperienceList = [
 		],
 	},
 	{
-		companyImg: "/assest/files/experience/ecocar/logo.jpg",
+		companyImg: "./assest/files/experience/ecocar/logo.jpg",
 		jobTitle: "Simulation Engineer",
 		company: "Eco Car Davis",
 		jobType: "Research Assistance",
@@ -50,7 +50,7 @@ export const ExperienceList = [
 		],
 	},
 	{
-		companyImg: "/assest/images/logo/logo-color.PNG",
+		companyImg: "./assest/images/logo/logo-color.PNG",
 		jobTitle: "Software Engineer",
 		company: "Freelancer",
 		jobType: "Customizable 3D Character Page",
