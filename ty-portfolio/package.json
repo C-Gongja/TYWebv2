@@ -5,7 +5,7 @@
 	"homepage": "https://c-gongja.github.io/TYWebv2",
 	"type": "module",
 	"scripts": {
-		"predeploy": "vite build && cp dist/index.html dist/404.html",
+		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist",
 		"dev": "vite",
 		"build": "tsc -b && vite build",
