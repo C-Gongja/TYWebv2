@@ -20,7 +20,7 @@ function ModalTitle({ project, onClose }: ModalProps) {
 				<h2 className="text-3xl md:text-2xl lg:text-4xl font-bold text-black">{project.modaltitle}</h2>
 				<a href={project.githublink} target="_blank" className="hidden md:block">
 					<img
-						src="/assest/images/github-mark/github-mark.svg"
+						src="./assest/images/github-mark/github-mark.svg"
 						alt="Button Image"
 						className="max-w-[40px] max-h-[40px] p-[2px] md:max-w-[50px] md:max-h-[50px] md:object-contain transition transform hover:scale-105 rounded-full"
 					/>
