@@ -7,5 +7,5 @@ export default defineConfig({
 	css: {
 		postcss: "./postcss.config.js",  // PostCSS 설정 경로 추가
 	},
-	base: process.env.NODE_ENV === 'production' ? '/TYWebv2/' : '/',
+	base: process.env.NODE_ENV === 'development' ? '/' : '/TYWebv2/',
 })
