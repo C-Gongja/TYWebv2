@@ -2,6 +2,7 @@
 	"name": "ty-portfolio",
 	"private": true,
 	"version": "0.0.0",
+	"homepage": "https://c-gongja.github.io/TYWebv2/",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
