@@ -8,13 +8,14 @@ interface DropdownProps {
 }
 
 export default function Dropdown({ children, isOpen, visibilityAnimation, setVisibilityAnimation }: DropdownProps) {
-	// const [visibilityAnimation, setVisibilityAnimation] = useState(false);
-	const [repeat, setRepeat] = useState<NodeJS.Timeout | null>(null);
+	const [repeat, setRepeat] = useState<number | null>(null);
 
 	useEffect(() => {
 		{/* ← add */ }
 		if (isOpen) {
-			clearTimeout(repeat);
+			if (repeat !== null) {
+				clearTimeout(repeat);
+			}
 			setRepeat(null);
 			setVisibilityAnimation(true);
 		} else {

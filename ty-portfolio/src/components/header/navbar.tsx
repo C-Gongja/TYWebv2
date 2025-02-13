@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { HeaderDropdown } from "./HeaderDropDown";
 import { personalLinks } from "../../routes/externalRoutes/ExternalRoutes";
 import ProjectModal from "../projects-components/modal-components/Modals";
 import { useLocation } from "react-router-dom";
 import Dropdown from "./MobileNavbar";
+import { Project } from "../projects-components/ProjectList";
 
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [selectedProject, setSelectedProject] = useState(null);
+	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 	const location = useLocation();
 	const [activeSection, setActiveSection] = useState("home");
 
 	//mobile 
 	const [visibilityAnimation, setVisibilityAnimation] = useState(false);
 
-	const handleProjectClick = (project) => {
+	const handleProjectClick = (project: Project) => {
 		setSelectedProject(project);
 		setIsModalOpen(true);
 	};
@@ -25,7 +26,7 @@ const Navbar = () => {
 		setIsModalOpen(false);
 	};
 
-	const scrollToSection = (hash) => {
+	const scrollToSection = (hash: string) => {
 		const targetId = hash.replace("#", "");
 		const targetElement = document.getElementById(targetId);
 		if (targetElement) {
@@ -62,7 +63,7 @@ const Navbar = () => {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [location.pathname]);
 
-	const getLinkClass = (targetId) => {
+	const getLinkClass = (targetId: string) => {
 		if (location.pathname === "/resume") return targetId === "resume" ? "text-violet-300" : "";
 		return activeSection === targetId ? "text-violet-300" : "";
 	};
@@ -132,7 +133,7 @@ const Navbar = () => {
 						<div className="hidden lg:flex">
 							<ul className="flex justify-center space-x-4 cursor-pointer">
 								{personalLinks.map((link, index) => (
-									<li className="relative  w-[50px] h-[50px] flex items-center justify-center rounded-xl bg-transparent transition-all duration-200 ease-in-out opacity-25
+									<li key={index} className="relative  w-[50px] h-[50px] flex items-center justify-center rounded-xl bg-transparent transition-all duration-200 ease-in-out opacity-25
 														hover:opacity-100 hover:bg-[#7165ed] group">
 										<a href={link.link} target={link.appName === "CV" ? "_self" : "_blank"}
 											className="w-[70%] h-[70%] flex items-center justify-center z-10 ">
@@ -177,7 +178,7 @@ const Navbar = () => {
 			</div>
 
 			{
-				isModalOpen && (
+				isModalOpen && selectedProject && (
 					<ProjectModal project={selectedProject} onClose={handleCloseModal} />
 				)
 			}

@@ -1,4 +1,15 @@
-export const TimelineData = [
+export interface Experience {
+	companyImg: string;
+	jobTitle: string;
+	company: string;
+	jobType: string;
+	year: string;
+	duration: string;
+	description: string[];
+}
+
+
+export const ExperienceList = [
 	{
 		companyImg: "/assest/images/logo/logo-color.PNG",
 		jobTitle: "Graphic Designer",
@@ -11,23 +22,6 @@ export const TimelineData = [
 			"Use Adobe Illustrator and Photoshop as design tools."
 		],
 	},
-	// {
-	// 	companyImg: "",
-	// 	jobTitle: "gap",
-	// 	company: "",
-	// 	jobType: "",
-	// 	year: "",
-	// 	duration: "",
-	// 	description: [
-	// 		"",
-	// 		"",
-	// 		"",
-	// 		"",
-	// 		"",
-	// 		"",
-	// 		"",
-	// 	],
-	// },
 	{
 		companyImg: "/assest/files/experience/ecocar/logo.jpg",
 		jobTitle: "V2X-Radio Engineer ",

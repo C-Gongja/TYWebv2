@@ -1,11 +1,14 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react';
+import { Suspense, useRef, useState } from 'react';
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js';
 
+interface RotatingMeshProps {
+	geometry: THREE.BufferGeometry;
+}
 
-function RotatingMesh({ geometry }) {
+function RotatingMesh({ geometry }: RotatingMeshProps) {
 	const meshRef = useRef<THREE.Mesh | null>(null);
 	const [time, setTime] = useState(0);
 	const [isHovered, setIsHovered] = useState(false);
@@ -49,7 +52,11 @@ function RotatingMesh({ geometry }) {
 	);
 }
 
-function LogoThree({ url }) {  // props로 url 받기
+interface LogoThreeProps {
+	url: string;
+}
+
+function LogoThree({ url }: LogoThreeProps) {  // props로 url 받기
 	const geometry = useLoader(STLLoader, url); // 파일 경로를 문자열로 전달
 
 	return (

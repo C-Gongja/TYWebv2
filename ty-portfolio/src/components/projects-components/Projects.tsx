@@ -3,11 +3,9 @@ import ProjectModal from "./modal-components/Modals";
 import { projects, Project } from "./ProjectList"; // Assuming Project type is defined in ProjectList
 import AnimationWrapper from "../animation/AnimationWrapper";
 
-interface ProjectsProps { }
-
 const tabs = ["all", "ai", "web", "software"];
 
-const Projects: React.FC<ProjectsProps> = () => {
+const Projects = () => {
 	const [activeTab, setActiveTab] = useState<string>("all");
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 	const containerRef = useRef<HTMLDivElement | null>(null);
@@ -144,11 +142,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => (
 		<div className="absolute -inset-1 bg-gradient-to-r from-[#d9d9d91c] to-[#d9d9d950]rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
 		<div className="flex flex-col w-80 min-w-[360px] h-[96%] bg-gradient-to-t from-[#d9d9d91c] to-[#d9d9d950] backdrop-blur-lg rounded-3xl overflow-hidden cursor-pointer transition transform hover:scale-105 hover:z-10">
 			<div className="min-h-85 p-5 relative overflow-hidden">
-				<img
-					src={project.image}
-					alt="Project"
-					className="w-full h-[300px] object-contain bg-white rounded-2xl p-5"
-				/>
+				{project.image ? (
+					<img
+						src={project.image}
+						alt="Project"
+						className="w-full h-[300px] object-contain bg-white rounded-2xl p-5"
+					/>
+				) : (
+					<div className="w-full h-[300px] bg-white rounded-2xl p-5 flex items-center justify-center">
+						<span className="text-xl font-bold text-gray-700">{project.title}</span>
+					</div>
+				)}
 			</div>
 			<div className="p-4">
 				<h2 className="text-3xl font-bold text-gray-200 min-h-20 flex justify-center items-center text-center" dangerouslySetInnerHTML={{ __html: project.title }} />

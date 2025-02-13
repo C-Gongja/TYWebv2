@@ -1,3 +1,35 @@
+export interface ProjectDescriptionBodyItem {
+	title: string;
+	bullets: (string | { subtitle: string; subBullets: string[] })[];
+}
+
+export interface ProjectDescription {
+	Intro: string;
+	body: ProjectDescriptionBodyItem[];
+}
+
+export interface ProjectAttach {
+	title: string;
+	src: string;
+}
+
+export interface Project {
+	id: number;
+	category: string;
+	title: string;
+	tabtitle: string;
+	modaltitle: string;
+	image: string | null;
+	technologies: string[];
+	description: ProjectDescription;
+	githublink: string;
+	attach: ProjectAttach[];
+	demo: string[];
+}
+
+export default interface ProjectsProps {
+	projects: Project[];
+}
 
 export const projects = [
 	{
