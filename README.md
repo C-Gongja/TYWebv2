@@ -48,3 +48,7 @@ export default tseslint.config({
   },
 })
 ```
+
+# How to deploy React + Vite to Github Pages
+npm run deploy
+
