@@ -34,6 +34,45 @@ export default interface ProjectsProps {
 export const projects = [
 	{
 		id: 0,
+		category: "web",
+		title: "3D Character Generator",
+		tabtitle: "3D Character Generator",
+		modaltitle: "3D Character Generator",
+		image: "./assest/files/projects/3d_char/3d_char_logo.png",
+		technologies: ["TypeScript", "React", "Tailwindcss", "Three.js", "Node.js", "PostgreSQL", "GCS"],
+		description: {
+			Intro: ``,
+			body: [
+				{
+					title: "Summary",
+					bullets: [
+						`Developed a dynamic and interactive 3D character customization page, enhancing user engagement.`,
+						`Designed a scalable and maintainable architecture following best practices, including Atomic Design and Zustand.`,
+						`Built a RESTful API using Node.js to handle CRUD operations for efficient resource management.`,
+						`SQL Query Optimization`,
+						`Implemented authentication and authorization using JWT tokens to ensure secure user access.`,
+						`Integrated PostgreSQL and Google Cloud Storage (GCS) for managing user data and file storage (PNG, SVG).`,
+					]
+				},
+				{
+					title: "Features",
+					bullets: [
+						`Sign Up & Sign In`,
+						`Customizable 3D Character`,
+						`Customizable User Card Information`,
+						`Customizable Capture`,
+						`Save`,
+						`Reset`,
+					],
+				},
+			],
+		},
+		githublink: "",
+		attach: [],
+		demo: ["./assest/files/projects/3d_char/3d_char.mp4"]
+	},
+	{
+		id: 1,
 		category: "ai",
 		title: "F1-tenth <br> Autonomous Race Car",
 		tabtitle: "F1-tenth",
@@ -113,7 +152,7 @@ export const projects = [
 		demo: ["./assest/files/projects/f1/f1_demo.mp4"]
 	},
 	{
-		id: 1,
+		id: 2,
 		category: "ai",
 		title: "Connect 4 <br> Game AI",
 		tabtitle: "Connect 4 AI",
@@ -141,7 +180,7 @@ export const projects = [
 		demo: ["./assest/files/projects/c4/c4_demo.mp4"]
 	},
 	{
-		id: 2,
+		id: 3,
 		category: "ai",
 		title: "Hand Gesture <br> Youtube Controller",
 		tabtitle: "HGR Control",
@@ -196,7 +235,7 @@ export const projects = [
 		demo: ["./assest/files/projects/hgr/hgr_youtube_controller_demo.mp4"]
 	},
 	{
-		id: 3,
+		id: 4,
 		category: "web",
 		title: "X Clone",
 		tabtitle: "X Clone",
@@ -228,7 +267,7 @@ export const projects = [
 		demo: ["./assest/files/projects/X_clone/X_clone_demo.mp4"]
 	},
 	{
-		id: 4,
+		id: 5,
 		category: "software",
 		title: "Enigma Machine",
 		tabtitle: "Enigma Machine",
@@ -263,7 +302,7 @@ export const projects = [
 		demo: ["./assest/files/projects/enigma/Enigma_demo.mov"]
 	},
 	{
-		id: 5,
+		id: 6,
 		category: "software",
 		title: "BigNum Calculator",
 		tabtitle: "BigNum Calculator",

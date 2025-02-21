@@ -14,7 +14,7 @@ function App() {
 	}, []);
 
 	return (
-		<div className="font-urbanist w-full bg-violet-900 scrollbar-hidden">
+		<div className="font-urbanist w-full bg-violet-900 no-scrollbar">
 			{isLoading ? (
 				<LoadingScreen />
 			) : (

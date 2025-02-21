@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import ProjectModal from "./modal-components/Modals";
 import { projects, Project } from "./ProjectList"; // Assuming Project type is defined in ProjectList
 import AnimationWrapper from "../animation/AnimationWrapper";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const tabs = ["all", "ai", "web", "software"];
 
@@ -72,7 +73,7 @@ const Projects = () => {
 			<AnimationWrapper animationType={"translateXFromRight"} delay="0.3s">
 				<div
 					ref={containerRef}
-					className="flex gap-6 overflow-x-auto scrollbar-hide p-4 h-150 mx-auto md:max-w-[80%]"
+					className="flex gap-6 overflow-x-auto scrollbar-hide p-4 h-150 mx-auto md:max-w-[80%] no-scrollbar"
 				>
 					{filteredProjects.map((project) => (
 						<ProjectCard key={project.id} project={project} onClick={() => setSelectedProject(project)} />
@@ -118,16 +119,19 @@ interface ScrollButtonProps {
 	onClick: () => void;
 }
 
+
 const ScrollButton: React.FC<ScrollButtonProps> = ({ direction, onClick }) => (
 	<button
-		className={`w-[150px] absolute ${direction === "left" ? "left-0" : "right-0"} transform -translate-y-1/2 p-2 cursor-pointer rounded-full z-30 transition-all duration-300
+		className={`w-[150px] h-[70px] flex items-center justify-center absolute mt-[20px]
+      ${direction === "left" ? "left-[0px] md:left-[10px] xl:left-[0px]" : "right-[0px] md:right-[10px] xl:-right-[0px]"} transform -translate-y-1/2 p-2 
+      cursor-pointer rounded-full z-30 transition-all duration-300
       text-white bg-white/20 shadow-lg ring-1 ring-black/5
-      md:w-[70px] md:h-[100px] md:bottom-[200px] md:-${direction === "left" ? "left" : "right"}-[10px]
-      lg:w-[70px] lg:h-[100px] lg:${direction === "left" ? "left-10" : "right-10"} lg:bottom-[200px] lg:text-violet-300 
-      active:bg-violet-400 lg:hover:bg-violet-400 lg:hover:text-white`}
+			md:w-[70px] md:h-[100px] md:bottom-[200px] 
+      xl:w-[70px] xl:h-[100px] xl:bottom-[200px] xl:text-violet-300 
+      active:bg-violet-400 xl:hover:bg-violet-400 xl:hover:text-white`}
 		onClick={onClick}
 	>
-		{direction === "left" ? "<" : ">"}
+		{direction === "left" ? <IoIosArrowBack size={30} /> : <IoIosArrowForward size={30} />}
 	</button>
 );
 

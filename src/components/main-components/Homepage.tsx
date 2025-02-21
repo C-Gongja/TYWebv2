@@ -4,7 +4,7 @@ import LogoThree from "./Logo3D";
 const HomePage = () => {
 	const url = "./assest/images/logo/3d_logo.stl";
 	return (
-		<div id="home" className="pt-[150px] pb-[80px] px-[40px] bg-transparent">
+		<div id="home" className="pt-[150px] pb-[80px] px-[40px] bg-transparent no-scrollbar">
 			<div className="grid grid-rows-2 items-center max-w-full h-[70vh] p-0
 			md:mb-[50px]
 			xl:grid-cols-[1.3fr_1fr] xl:grid-rows-none">

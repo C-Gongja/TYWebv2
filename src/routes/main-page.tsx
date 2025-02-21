@@ -6,7 +6,7 @@ import ContactForm from "../components/contact/Contact";
 
 const MainPage = () => {
 	return (
-		<main className="bg-violet-900">
+		<main className="bg-violet-900 no-scrollbar">
 			<HomePage />
 			<Experiences />
 			<Projects />
