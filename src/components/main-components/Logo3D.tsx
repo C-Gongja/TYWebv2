@@ -44,7 +44,7 @@ function RotatingMesh({ geometry }: RotatingMeshProps) {
 			</mesh>
 
 			{/* ✅ Actual Mesh */}
-			<mesh ref={meshRef} scale={[1, 1, 1]} castShadow receiveShadow>
+			<mesh ref={meshRef} scale={[1, 1, 1]} castShadow receiveShadow rotation={[0, -1, 0]}>
 				<primitive object={geometry} />
 				<meshStandardMaterial color="#7761a9" />
 			</mesh>
@@ -67,7 +67,7 @@ function LogoThree({ url }: LogoThreeProps) {  // props로 url 받기
 			>
 				<Suspense fallback={<div>Loading...</div>}>
 					{/* ✅ 위에서 비추는 조명 */}
-					<directionalLight position={[5, 5, 3]} intensity={5} castShadow />
+					<directionalLight position={[0, 5, 3]} intensity={5} castShadow />
 					<ambientLight intensity={1.5} />
 					<pointLight position={[2, 2, 2]} intensity={1} />
 
@@ -83,8 +83,8 @@ function LogoThree({ url }: LogoThreeProps) {  // props로 url 받기
 						minPolarAngle={Math.PI / 3} // 🔼 최소 Polar Angle (90도)
 						maxPolarAngle={Math.PI / 2} // 🔽 최대 Polar Angle (90도)
 
-						minAzimuthAngle={-Math.PI / 6} // ⬅️ 좌측 최대 회전 각도 (-30도)
-						maxAzimuthAngle={0}  // ➡️ 우측 최대 회전 각도 (30도)
+						minAzimuthAngle={-Infinity} // ⬅️ 좌측 최대 회전 각도 (-30도)
+						maxAzimuthAngle={Infinity}  // ➡️ 우측 최대 회전 각도 (30도)
 					/>
 				</Suspense>
 			</Canvas>

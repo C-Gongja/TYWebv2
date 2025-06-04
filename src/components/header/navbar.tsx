@@ -110,25 +110,25 @@ const Navbar = () => {
 						</div>
 
 						{/* Links (Desktop) */}
-						<div className="hidden lg:flex gap-1 lg:gap-1 text-white/25 transition-all duration-300 ease-in-out">
-							<button className="transition transform hover:text-violet-100 p-6">
+						<div className="hidden lg:flex lg:gap-8 text-white/25 transition-all duration-300 ease-in-out">
+							<button className="transition transform hover:text-violet-100">
 								<Link to="/#home" className={`text-xl ${getLinkClass("home")}`}>Home</Link>
 							</button>
-							<button className="transition transform hover:text-violet-100 p-6">
+							<button className="transition transform hover:text-violet-100">
 								<Link to="/#experience" className={`text-xl ${getLinkClass("experience")}`}>Experience</Link>
 								{/* <a href="#experience" className={`text-xl ${getLinkClass("experience")}`}>Experience</a> */}
 							</button>
-							<div className="dropdown dropdown-hover transition transform hover:text-violet-100 p-6">
+							<div className="dropdown dropdown-hover transition transform hover:text-violet-100 py-6">
 								<Link to="/#projects" className={`text-xl ${getLinkClass("projects")}`}>Projects</Link>
 								<div className="absolute top-full left-2">
 									<HeaderDropdown handleProjectClick={handleProjectClick} />
 								</div>
 							</div>
-							<button className="transition transform hover:text-violet-100 p-6">
+							<button className="transition transform hover:text-violet-100 ">
 								<Link to="/resume" className={`text-xl ${getLinkClass("resume")}`}>Resume</Link>
 								{/* <a href="resume" className={`text-xl ${getLinkClass("resume")}`}>Resume</a> */}
 							</button>
-							<button className="transition transform hover:text-violet-100 p-6">
+							<button className="transition transform hover:text-violet-100">
 								<Link to="/#contact" className={`text-xl ${getLinkClass("contact")}`}>Contact</Link>
 							</button>
 						</div>

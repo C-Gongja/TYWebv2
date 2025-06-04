@@ -77,7 +77,7 @@ const Experiences = () => {
 
 /* ✅ Horizontal Line (수평선) */
 const HorizontalLine = () => (
-	<div className="lg:relative lg:bg-gray-300 lg:rounded-lg lg:-left-[50px] lg:w-[85%] lg:h-3 lg:top-1/2 lg:flex" />
+	<div className="lg:relative lg:bg-gray-300 lg:rounded-lg lg:-left-[50px] lg:w-[85%] lg:h-2 lg:top-1/2 lg:flex" />
 );
 
 interface BulletPointProps {
@@ -93,17 +93,27 @@ const BulletPoint = ({ index, item, selectedJob, handleClick }: BulletPointProps
 
 	return (
 		<div
-			className={`lg:relative lg:flex lg:flex-col lg:items-center lg:cursor-pointer lg:transition lg:transform lg:hover:scale-105 lg:hover:z-5
-			${isSelected ? "lg:scale-125 lg:hover:scale-125" : ""}`}
 			onClick={() => handleClick(index)}
+			className={`lg:relative lg:flex lg:flex-col lg:items-center lg:cursor-pointer lg:transition lg:transform lg:hover:scale-105 lg:hover:z-5
+				${isSelected ? "lg:scale-125 lg:hover:scale-125" : ""}`}
 		>
-			<h2 className="lg:w-[120px] lg:absolute lg:text-2xl lg:bottom-10 lg:font-semibold lg:text-white lg:text-center lg:whitespace-normal lg:leading-tight">
+			{/* Job Title */}
+			<h2 className="lg:absolute lg:bottom-10 lg:w-[120px] lg:text-2xl lg:font-semibold lg:text-white lg:text-center lg:whitespace-normal lg:leading-tight">
 				{item.jobTitle}
 			</h2>
-			{/* larger clickalbe area for bullet points */}
-			<div className="lg:w-[100px] lg:h-10 lg:absolute lg:-top-6" />
-			<div className="lg:w-8 lg:h-8 lg:bg-cyan-400 lg:rounded-full lg:absolute lg:-top-6" />
-			<div className={`lg:w-8 lg:h-8 lg:bg-cyan-400 lg:rounded-full lg:absolute lg:-top-6 ${isSelected ? "animate-ping" : ""}`} />
+
+			{/* Larger clickable area for bullet points */}
+			<div className="lg:absolute lg:-top-6 lg:w-[100px] lg:h-10" />
+
+			{/* Bullet point */}
+			<div className="lg:absolute lg:-top-4 lg:w-6 lg:h-6 lg:bg-cyan-400 lg:rounded-full" />
+
+			{/* Ping effect on selected */}
+			{isSelected && (
+				<div className="lg:absolute lg:-top-5 lg:w-8 lg:h-8 lg:bg-cyan-400 lg:rounded-full animate-ping" />
+			)}
+
+			{/* Year */}
 			<p className="lg:absolute lg:top-5 lg:text-2xl lg:text-gray-200 lg:font-semibold">
 				{item.year}
 			</p>

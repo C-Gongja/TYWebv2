@@ -41,12 +41,11 @@ export const projects = [
 		image: "./assest/files/projects/3d_char/3d_char_logo.png",
 		technologies: ["TypeScript", "React", "Tailwindcss", "Three.js", "Node.js", "PostgreSQL", "GCS"],
 		description: {
-			Intro: ``,
+			Intro: `A prototype web application enabling interactive 3D character customization.`,
 			body: [
 				{
 					title: "Summary",
 					bullets: [
-						`Developed a dynamic and interactive 3D character customization page, enhancing user engagement.`,
 						`Designed a scalable and maintainable architecture following best practices, including Atomic Design and Zustand.`,
 						`Built a RESTful API using Node.js to handle CRUD operations for efficient resource management.`,
 						`SQL Query Optimization`,
