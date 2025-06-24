@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { HeaderDropdown } from "./HeaderDropDown";
 import { personalLinks } from "../../routes/externalRoutes/ExternalRoutes";
-import ProjectModal from "../projects-components/modal-components/Modals";
 import { Link, useLocation } from "react-router-dom";
-import Dropdown from "./MobileNavbar";
 import { Project } from "../projects-components/ProjectList";
+import ProjectModal from "../projects-components/modal-components/Modals";
+import Dropdown from "./MobileNavbar";
+// import ThemeToggle from "../ui/theme/Theme";
 
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -71,9 +72,11 @@ const Navbar = () => {
 	return (
 		<nav>
 			<div className="flex justify-center">
-				<div className="fixed top-10 max-w-[80%] xl:max-w-[80%] w-full z-10 select-none">
-					<div className={`flex justify-between px-[20px] lg:px-30 items-center bg-gradient-to-r from-[#d9d9d91f] to-[#7373731f] backdrop-blur-xl 
-					${isOpen || visibilityAnimation ? "rounded-t-2xl" : "rounded-2xl"}`}>
+				<div className="fixed max-w-[100%] xl:max-w-[100%] w-full z-10 select-none">
+					<div className={`flex justify-between px-[20px] items-center 
+					bg-gradient-to-r from-[#d9d9d91f] to-[#7373731f] backdrop-blur-xl 
+					lg:justify-center lg:gap-10 lg:px-30 `}
+					>
 						{/* Logo */}
 						<div className="md:ml-5 p-3">
 							<Link to="#" className="">
@@ -110,43 +113,55 @@ const Navbar = () => {
 						</div>
 
 						{/* Links (Desktop) */}
-						<div className="hidden lg:flex lg:gap-8 text-white/25 transition-all duration-300 ease-in-out">
-							<button className="transition transform hover:text-violet-100">
+						<div className="hidden lg:flex lg:gap-8 text-maincolor transition-all duration-300 ease-in-out">
+							<button className="transition transform hover:text-maindarkcolor">
 								<Link to="/#home" className={`text-xl ${getLinkClass("home")}`}>Home</Link>
 							</button>
-							<button className="transition transform hover:text-violet-100">
+							<button className="transition transform hover:text-maindarkcolor">
 								<Link to="/#experience" className={`text-xl ${getLinkClass("experience")}`}>Experience</Link>
 								{/* <a href="#experience" className={`text-xl ${getLinkClass("experience")}`}>Experience</a> */}
 							</button>
-							<div className="dropdown dropdown-hover transition transform hover:text-violet-100 py-6">
+							<div className="dropdown dropdown-hover transition transform hover:text-maindarkcolor py-6">
 								<Link to="/#projects" className={`text-xl ${getLinkClass("projects")}`}>Projects</Link>
 								<div className="absolute top-full left-2">
 									<HeaderDropdown handleProjectClick={handleProjectClick} />
 								</div>
 							</div>
-							<button className="transition transform hover:text-violet-100 ">
+							<button className="transition transform hover:text-maindarkcolor ">
 								<Link to="/resume" className={`text-xl ${getLinkClass("resume")}`}>Resume</Link>
 								{/* <a href="resume" className={`text-xl ${getLinkClass("resume")}`}>Resume</a> */}
 							</button>
-							<button className="transition transform hover:text-violet-100">
+							<button className="transition transform hover:text-maindarkcolor">
 								<Link to="/#contact" className={`text-xl ${getLinkClass("contact")}`}>Contact</Link>
 							</button>
 						</div>
+
 						<div className="hidden lg:flex">
-							<ul className="flex justify-center space-x-4 cursor-pointer">
-								{personalLinks.map((link, index) => (
-									<li key={index} className="relative  w-[50px] h-[50px] flex items-center justify-center rounded-xl bg-transparent transition-all duration-200 ease-in-out opacity-25
-														hover:opacity-100 hover:bg-[#7165ed] group">
-										<Link to={link.link} target={link.appName === "CV" ? "_self" : "_blank"}
-											className="w-[70%] h-[70%] flex items-center justify-center z-10 ">
-											<img src={link.icon} alt="GitHub Icon" className="mb-1" />
-										</Link>
-										<span className="absolute inset-0 rounded-xl opacity-0 shadow-[0_0_0_2px_#4837ff] transition-all duration-200 
-														 group-hover:opacity-100 group-hover:scale-110"></span>
-									</li>
-								))}
+							<ul className="flex justify-center space-x-4 cursor-pointer ">
+								{personalLinks.map((link, index) => {
+									const Icon = link.icon; // 컴포넌트 꺼내기
+									return (
+										<li
+											key={index}
+											className="relative w-[50px] h-[50px] flex items-center justify-center rounded-xl 
+																bg-transparent transition-all duration-200 ease-in-out
+																hover:opacity-100 hover:bg-maindarkcolor group"
+										>
+											<Link
+												to={link.link}
+												target={link.appName === "CV" ? "_self" : "_blank"}
+												className="w-[70%] h-[70%] flex items-center justify-center z-10"
+											>
+												<Icon className="w-full h-full text-maincolor group-hover:text-white transition-colors duration-200" />
+											</Link>
+											<span className="absolute inset-0 rounded-xl opacity-0 shadow-[0_0_0_2px_#4837ff] transition-all duration-200 
+																				group-hover:opacity-100 group-hover:scale-110" />
+										</li>
+									);
+								})}
 							</ul>
 						</div>
+						{/* <ThemeToggle /> */}
 					</div>
 
 					{/* Mobile Menu (Hamburger) */}
@@ -167,13 +182,16 @@ const Navbar = () => {
 							<Link to="/#contact" onClick={() => setIsOpen(!isOpen)} className={`text-[25px] md:text-[30px] ${getLinkClass("contact")}`}>Contact</Link>
 						</li>
 						<li className="flex justify-center space-x-4 py-2">
-							{personalLinks.map((link, index) => (
-								<div key={index} className="relative w-[60px] h-[60px] md:w-[90px] md:h-[90px] flex items-center justify-center rounded-xl bg-transparent transition-all duration-200 ease-in-out opacity-80">
-									<Link to={link.link} target={link.appName === "CV" ? "_self" : "_blank"} className="w-[70%] h-[70%] flex items-center justify-center z-10">
-										<img src={link.icon} alt="Icon" className="mb-1" />
-									</Link>
-								</div>
-							))}
+							{personalLinks.map((link, index) => {
+								const Icon = link.icon; // 컴포넌트 꺼내기
+								return (
+									<div key={index} className="relative w-[60px] h-[60px] md:w-[90px] md:h-[90px] flex items-center justify-center rounded-xl bg-transparent transition-all duration-200 ease-in-out opacity-80">
+										<Link to={link.link} target={link.appName === "CV" ? "_self" : "_blank"} className="w-[70%] h-[70%] flex items-center justify-center z-10">
+											<Icon className="w-full h-full text-maincolor group-hover:text-white transition-colors duration-200" />
+										</Link>
+									</div>
+								);
+							})}
 						</li>
 					</Dropdown>
 				</div>

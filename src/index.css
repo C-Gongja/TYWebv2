@@ -2,6 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	--theme-bg: #ffffff;
+
+	--bg-main: #ffffff;
+	--text-main: #646cff;
+	--border-main: #171717;
+
+	--project-bg: #4952fe;
+	--project-shadow: [inset_0px_0px_45px_-10px_#110826];
+
+	--bg-nav: #e5e7eb;
+	--bg-nav-btn: #d1d5db;
+	--text-nav-btn: #111827;
+
+	--bg-secondary: #e5e7eb;
+	--bg-secondary-highlight: #d1d5db;
+}
+
+.dark {
+	--theme-bg: #646cff;
+
+	--bg-main: #1a1a1a;
+	--text-main: #646cff;
+	--border-main: #f0f0f0;
+
+	--project-bg: #321a68;
+	--project-shadow: [inset_0px_0px_45px_-10px_#110826];
+
+	--bg-nav: #1f2937;
+	--bg-nav-btn: #111827;
+	--text-nav-btn: #f0f0f0;
+
+	--bg-secondary: #1f2937;
+	--bg-secondary-highlight: #374151;
+}
+
 body {
 	/* background: #08233b;
 	color: white; */

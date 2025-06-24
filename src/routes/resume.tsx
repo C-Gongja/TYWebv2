@@ -10,7 +10,7 @@ export default function Resume() {
 			<h1 className="flex justify-center items-center text-6xl text-gray-200 font-bold m-[50px]">Resume</h1>
 			<div className="flex justify-center items-center">
 				<iframe
-					src="./assest/files/Resume.pdf"
+					src="./assest/files/Taeyoon_Kim_Resume.pdf"
 					width="100%"
 					height="800px"
 					className="border-4 border-gray-300"

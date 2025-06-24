@@ -1,17 +1,22 @@
+import { IoLogoGithub } from "react-icons/io";
+import { FaLinkedin } from "react-icons/fa";
+import { HiOutlineDocumentText } from "react-icons/hi2";
+
+
 export const personalLinks = [
 	{
 		appName: "LinkedIn",
-		icon: "./assest/images/icons/linkdin.png",
+		icon: FaLinkedin,
 		link: "https://www.linkedin.com/in/taeyoon-kim-477996262/"
 	},
 	{
 		appName: "Github",
-		icon: "./assest/images/icons/github-white.png",
+		icon: IoLogoGithub,
 		link: "https://github.com/C-Gongja"
 	},
 	{
 		appName: "CV",
-		icon: "./assest/images/icons/cv.png",
+		icon: HiOutlineDocumentText,
 		link: "/resume"
 	}
-]
+];

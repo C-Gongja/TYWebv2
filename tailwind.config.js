@@ -9,6 +9,12 @@ export default {
 			fontFamily: {
 				"urbanist": ["Urbanist", "serif"],
 			},
+			colors: {
+				background: "var(--background)",
+				foreground: "var(--foreground)",
+				maincolor: '#646cff',
+				maindarkcolor: '#4952fe',
+			},
 		},
 	},
 	plugins: [
