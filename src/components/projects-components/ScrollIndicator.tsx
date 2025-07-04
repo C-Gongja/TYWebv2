@@ -6,7 +6,7 @@ interface ScrollIndicatorProps {
 }
 
 const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({ itemsCount, activeIndex }) => (
-	<div className="flex justify-center gap-2 mt-4">
+	<div className="flex justify-center gap-2">
 		{Array.from({ length: itemsCount }).map((_, index) => (
 			<span
 				key={index}

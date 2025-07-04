@@ -13,7 +13,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => (
 			transition-all duration-300 ease-in-out overflow-hidden
       bg-gradient-to-t dark:from-[#d9d9d91c] dark:to-[#d9d9d950]
 			from-[#0000001c] to-[#00000050]
-			hover:scale-105
+			lg:hover:scale-105
       lg:hover:shadow-md"
 		onClick={onClick}
 	>

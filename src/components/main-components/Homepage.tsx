@@ -25,7 +25,7 @@ const HomePage = () => {
 				{/* LogoThree 영역 */}
 			</div>
 			<div className="absolute top-[15%] md:top-[10%] right-[0%] w-[100%] md:right-[25%] md:w-[50%] h-[300px] md:h-[400px]
-				xl:right-0 xl:h-[70%] xl:w-[50%] z-0">
+				xl:right-0 xl:h-[70%] xl:w-[50%] z-0 bg-transparent">
 				<LogoThree url={url} />
 			</div>
 		</div>

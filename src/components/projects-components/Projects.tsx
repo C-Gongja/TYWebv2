@@ -159,7 +159,7 @@ const Projects = () => {
 			<AnimationWrapper animationType={"translateXFromLeft"} delay="0.3s">
 				<div
 					ref={containerRef}
-					className="mb-5 p-10 flex gap-6 overflow-x-auto mx-auto w-[80%] no-scrollbar scrollbar-hide"
+					className="mb-5 p-6 flex gap-6 overflow-x-auto mx-auto w-[80%] no-scrollbar scrollbar-hide"
 					style={maskStyles}
 				>
 					{filteredProjects.map((project) => (
@@ -193,12 +193,11 @@ const Projects = () => {
 			)}
 
 			{/* Scroll Indicator (Mobile Only) */}
-			{isMobile && (
-				<ScrollIndicator
-					itemsCount={filteredProjects.length}
-					activeIndex={activeIndex}
-				/>
-			)}
+
+			<ScrollIndicator
+				itemsCount={filteredProjects.length}
+				activeIndex={activeIndex}
+			/>
 
 			{/* Modal */}
 			{selectedProject && (

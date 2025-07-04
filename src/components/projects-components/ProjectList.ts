@@ -22,9 +22,9 @@ export interface Project {
 	image: string | null;
 	technologies: string[];
 	description: ProjectDescription;
-	githublink: string;
-	attach: ProjectAttach[];
-	demo: string[];
+	githublink: string | null;
+	attach: ProjectAttach[] | null;
+	demo: string[] | null;
 }
 
 export default interface ProjectsProps {
@@ -93,7 +93,7 @@ export const projects = [
 		},
 		githublink: "",
 		attach: [],
-		demo: [null]
+		demo: []
 	},
 	{
 		id: 7,
@@ -141,7 +141,7 @@ export const projects = [
 		},
 		githublink: "",
 		attach: [],
-		demo: [null]
+		demo: []
 	},
 	{
 		id: 6,

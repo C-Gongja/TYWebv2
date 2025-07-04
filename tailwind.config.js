@@ -21,22 +21,18 @@ export default {
 				"custom-bg-opposite": "var(--theme-bg-opposite)",
 			},
 			keyframes: {
-				shrink: {
-					'0%': {
-						width: '0%',
-						left: '50%',
-						transform: 'translateX(-50%)',
-					},
-					'100%': {
-						width: '100%',
-						left: '0%', // left: '0' 또는 left: '0%' 둘 다 가능
-						transform: 'translateX(0)',
-					},
+				'scale-in': {
+					'0%': { transform: 'scaleX(0)' },
+					'100%': { transform: 'scaleX(1)' },
+				},
+				'scale-out': {
+					'0%': { transform: 'scaleX(1)' },
+					'100%': { transform: 'scaleX(0)' },
 				},
 			},
 			animation: {
-				'shrink-in': 'shrink 0.3s ease-in-out forwards',
-				'shrink-out': 'shrink 0.3s ease-in-out reverse forwards',
+				'scale-in': 'scale-in 0.3s ease-in-out forwards',
+				'scale-out': 'scale-out 0.3s ease-in-out forwards',
 			},
 		},
 	},

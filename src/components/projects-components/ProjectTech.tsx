@@ -25,7 +25,7 @@ const ProjectTechnologies: React.FC<ProjectTechnologiesProps> = ({ technologies 
 					<span
 						className="px-3 py-0.5 text-sm text-custom-mint rounded-lg font-regular"
 					>
-						more +{remainingTechsCount}
+						+{remainingTechsCount} more
 					</span>
 				)}
 			</div>

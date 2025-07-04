@@ -64,7 +64,7 @@ function LogoThree({ url }: LogoThreeProps) {  // props로 url 받기
 	const geometry = useLoader(STLLoader, url); // 파일 경로를 문자열로 전달
 
 	return (
-		<div className="h-full w-full cursor-pointer z-2">
+		<div className="h-full w-full cursor-pointer z-2 bg-transparent">
 			<Canvas
 				shadows
 				camera={{ position: [-2.3, 0, 0], fov: 75 }}

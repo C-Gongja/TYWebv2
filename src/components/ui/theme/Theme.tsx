@@ -39,15 +39,15 @@ const ThemeToggle = () => {
 	return (
 		<button
 			onClick={toggleTheme}
-			className="relative w-20 h-10 bg-[var(--theme-light-dark)] inset-shadow-lg rounded-full px-1 flex items-center transform transition-all duration-500 "
+			className="relative w-[60px] h-8 bg-[var(--theme-light-dark)] inset-shadow-lg rounded-full px-1 flex items-center transform transition-all duration-500 "
 			aria-label="Toggle theme"
 		>
 			<div
-				className={`absolute left-1 top-1 w-8 h-8 rounded-full shadow-md transform transition-transform duration-500 
-					${theme === 'light' ? 'translate-x-0 bg-white ' : 'translate-x-10 bg-gray-800'}`}
+				className={`absolute left-1 top-1 w-6 h-6 rounded-full shadow-md transform transition-transform duration-500 
+					${theme === 'light' ? 'translate-x-0 bg-white ' : 'translate-x-7 bg-[#1e202c]'}`}
 			/>
-			<div className="flex justify-between w-full z-10 text-xl px-[6px]">
-				<IoSunnyOutline className='text-yellow-300 dark:text-gray-700' />
+			<div className="flex justify-between w-full z-10 text-xl px-[2px]">
+				<IoSunnyOutline className='text-yellow-300 dark:text-[#1e202c]' />
 				<IoMoonOutline className='text-gray-200 dark:text-yellow-300' />
 			</div>
 		</button>
