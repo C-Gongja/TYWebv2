@@ -14,7 +14,7 @@ function App() {
 	}, []);
 
 	return (
-		<div className="font-urbanist w-full bg-violet-900 no-scrollbar">
+		<div className="font-urbanist w-full bg-[var(--theme-bg)] no-scrollbar transition-all duration-300 ease-in-out">
 			{isLoading ? (
 				<LoadingScreen />
 			) : (

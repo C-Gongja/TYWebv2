@@ -3,9 +3,8 @@ import Navbar from "./header/navbar";
 import Footer from "./footer/Footer";
 
 export default function Layout() {
-
 	return (
-		<div className="">
+		<div className="layout">
 			<Navbar />
 			<div className="">
 				<Outlet />

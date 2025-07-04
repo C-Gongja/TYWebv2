@@ -1,36 +1,71 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import NavLinks from './NavLinks';
+import SocialLinks from './SocialLinks';
+import ThemeToggle from '../ui/theme/Theme';
 
-interface DropdownProps {
-	children: React.ReactNode; // children을 위한 타입 지정
+interface MobileNavbarProps {
 	isOpen: boolean;
-	visibilityAnimation: boolean;
-	setVisibilityAnimation: Dispatch<SetStateAction<boolean>>;
+	getLinkClass: (targetId: string) => string;
+	onLinkClick: () => void;
+	navbarHeight: number;
 }
 
-export default function Dropdown({ children, isOpen, visibilityAnimation, setVisibilityAnimation }: DropdownProps) {
-	const [repeat, setRepeat] = useState<number | null>(null);
+const MobileNavbar: React.FC<MobileNavbarProps> = ({
+	isOpen,
+	getLinkClass,
+	onLinkClick,
+	navbarHeight,
+}) => {
+	const [isVisible, setIsVisible] = useState(false);
+	const [shouldSlideDown, setShouldSlideDown] = useState(false);
 
 	useEffect(() => {
 		if (isOpen) {
-			if (repeat !== null) {
-				clearTimeout(repeat);
-			}
-			setRepeat(null);
-			setVisibilityAnimation(true);
+			// 메뉴가 열릴 때
+			setIsVisible(true); // DOM에 렌더링
+			document.body.style.overflow = "hidden"; // 스크롤 방지
+
+			// 다음 프레임에서 슬라이드 다운 시작
+			requestAnimationFrame(() => {
+				setShouldSlideDown(true);
+			});
 		} else {
-			setRepeat(
-				window.setTimeout(() => {
-					setVisibilityAnimation(false);
-				}, 400)
-			);
+			// 메뉴가 닫힐 때
+			setShouldSlideDown(false); // 슬라이드 업 시작
+
+			// 애니메이션 완료 후 DOM에서 제거
+			const timer = setTimeout(() => {
+				setIsVisible(false);
+				document.body.style.overflow = "auto"; // 스크롤 복원
+			}, 300); // 애니메이션 지속 시간과 일치
+
+			return () => {
+				clearTimeout(timer);
+				document.body.style.overflow = "auto";
+			};
 		}
 	}, [isOpen]);
 
+	// 메뉴가 완전히 숨겨져 있을 때는 렌더링하지 않음
+	if (!isVisible) return null;
+
 	return (
-		<article className={`xl:hidden block ${isOpen ? 'slide-fade-in-dropdown' : 'slide-fade-out-dropdown'}`}>
-			<ul className="flex flex-col items-center text-white p-5 rounded-b-2xl bg-gradient-to-r from-[#d9d9d91f] to-[#7373731f] backdrop-blur-xl">
-				{visibilityAnimation && children}
+		<div
+			className={`fixed left-0 w-full h-full top-[${navbarHeight}px]
+				backdrop-blur-xl transform transition-transform duration-300 ease-in-out
+				${shouldSlideDown ? 'translate-x-0' : 'translate-x-full'}
+				lg:hidden overflow-y-auto`}
+			style={{ top: `${navbarHeight}px` }}
+		>
+			<ul className="flex flex-col items-center py-8 gap-4">
+				<NavLinks getLinkClass={getLinkClass} isMobile={true} onLinkClick={onLinkClick} />
+				<li className="py-2">
+					<SocialLinks isMobile={true} />
+				</li>
+				<ThemeToggle />
 			</ul>
-		</article>
+		</div>
 	);
-}
+};
+
+export default MobileNavbar;

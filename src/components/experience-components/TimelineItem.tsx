@@ -16,14 +16,14 @@ export default function TimelineItem({ Experience }: ExperienceProps) {
 				alt="logo"
 				className="select-none rounded-xl"
 			/>
-			<h1 className="lg:text-[60px] text-white">{Experience.jobTitle}</h1>
-			<h1 className="lg:text-[40px] text-white"> {Experience.company} | {Experience.jobType}</h1>
+			<h1 className="lg:text-[60px] text-[var(--text-main)] font-orbitron font-semibold">{Experience.jobTitle}</h1>
+			<h1 className="lg:text-[30px] text-[var(--text-main)]"> {Experience.company} | {Experience.jobType}</h1>
 			<h1 className="lg:text-[25px] text-gray">{Experience.duration}</h1>
 			<div className="mt-2">
 				{Experience.description.map((item, index) => {
 					return (
 						<div key={index}>
-							<li className="text-white break-words text-xl mb-3">{item}</li>
+							<li className="text-[var(--text-main)] break-words text-xl mb-3">{item}</li>
 						</div>
 					);
 				})}

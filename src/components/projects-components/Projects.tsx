@@ -1,8 +1,11 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback, useEffect, useLayoutEffect } from "react";
 import ProjectModal from "./modal-components/Modals";
 import { projects, Project } from "./ProjectList"; // Assuming Project type is defined in ProjectList
 import AnimationWrapper from "../animation/AnimationWrapper";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import TabButton from "./ProjectTabButton";
+import ProjectCard from "./ProjectCard";
+import ScrollButton from "./ScrollButton";
+import ScrollIndicator from "./ScrollIndicator";
 
 const tabs = ["all", "ai", "web", "software"];
 
@@ -11,17 +14,91 @@ const Projects = () => {
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 	const containerRef = useRef<HTMLDivElement | null>(null);
 
-	// Filter projects based on the active tab
+	const [isAtStart, setIsAtStart] = useState(true);
+	const [isAtEnd, setIsAtEnd] = useState(false);
+	const [isMobile, setIsMobile] = useState(false);
+	const [activeIndex, setActiveIndex] = useState(0);
+
 	const filteredProjects: Project[] =
 		activeTab === "all"
 			? projects
 			: projects.filter((project) => project.category === activeTab);
 
+	// 스크롤 위치를 업데이트하는 함수
+	const updateScrollPosition = useCallback(() => {
+		const container = containerRef.current;
+		if (container) {
+			const { scrollLeft, scrollWidth, clientWidth } = container;
+			setIsAtStart(scrollLeft === 0);
+			// 스크롤 끝 감지: 오차를 고려하여 1px 미만으로 체크
+			setIsAtEnd(Math.abs(scrollLeft + clientWidth - scrollWidth) < 0.5);
+
+			// 인디케이터용 활성 인덱스 계산
+			const cardWidth = window.innerWidth < 640 ? 320 : window.innerWidth < 768 ? 400 : 320; // 카드 너비 추정
+			const index = Math.round(scrollLeft / cardWidth);
+			setActiveIndex(Math.min(index, filteredProjects.length - 1));
+		}
+	}, [filteredProjects.length]);
+
+	useLayoutEffect(() => {
+		const handleResize = () => {
+			setIsMobile(window.innerWidth < 768);
+			updateScrollPosition();
+		};
+
+		handleResize();
+		updateScrollPosition();
+
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+
+	// 컴포넌트 마운트 시, 탭 변경 시, 창 크기 변경 시 스크롤 이벤트 리스너 추가/제거
+	useEffect(() => {
+		const container = containerRef.current;
+		if (!container) return;
+
+		// 초기 상태 설정
+		updateScrollPosition();
+
+		// 스크롤 이벤트 리스너
+		container.addEventListener('scroll', updateScrollPosition);
+		// 창 크기 변경 시에도 스크롤 위치 재확인 (컨테이너 크기 변경될 수 있음)
+		window.addEventListener('resize', updateScrollPosition);
+
+		return () => {
+			container.removeEventListener('scroll', updateScrollPosition);
+			window.removeEventListener('resize', updateScrollPosition);
+		};
+	}, [activeTab, filteredProjects, updateScrollPosition]); // ⭐ activeTab, filteredProjects에 따라 effect 재실행
+
+	// 스크롤 위치에 따라 maskImage 스타일을 동적으로 생성하는 함수
+	const getMaskImage = useCallback(() => {
+		const container = containerRef.current;
+		if (!container) return 'none';
+
+		const { scrollWidth, clientWidth } = container;
+
+		// 컨텐츠가 스크롤할 필요 없이 모두 보인다면 mask 필요 없음
+		if (scrollWidth <= clientWidth) {
+			return 'none';
+		}
+
+		// ⭐ 스크롤 위치에 따라 그라디언트 시작/끝점 색상 변경
+		const leftFade = isAtStart ? 'black 15%' : 'transparent';
+		const rightFade = isAtEnd ? 'black 95%' : 'transparent';
+
+		// 5% 지점부터 95% 지점까지는 완전히 보이도록 (black)
+		// 그 바깥쪽 (0-5%, 95-100%)에서 transparent/black으로 페이드 처리
+		return `linear-gradient(to right, ${leftFade}, black 5%, black 90%, ${rightFade})`;
+	}, [isAtStart, isAtEnd]); // isAtStart, isAtEnd 상태가 변경될 때마다 재계산
+
 	// Get scroll amount based on screen size
 	const getScrollAmount = (): number => {
 		if (window.innerWidth > 1200) return 1000;  // Desktop
-		if (window.innerWidth > 768) return 600;   // Tablet
-		return 385;  // Mobile
+		if (window.innerWidth > 768) return 500;   // Tablet
+		return 345;  // Mobile
 	};
 
 	// Scroll left function
@@ -31,6 +108,8 @@ const Projects = () => {
 				left: -getScrollAmount(),
 				behavior: "smooth",
 			});
+			// 스크롤 후 위치 업데이트
+			setTimeout(updateScrollPosition, 300); // smooth behavior에 맞춰 약간의 딜레이
 		}
 	};
 
@@ -41,23 +120,30 @@ const Projects = () => {
 				left: getScrollAmount(),
 				behavior: "smooth",
 			});
+			// 스크롤 후 위치 업데이트
+			setTimeout(updateScrollPosition, 300); // smooth behavior에 맞춰 약간의 딜레이
 		}
 	};
 
-	return (
-		<div id="projects" className="px-5 bg-transparent md:px-30">
-			<div className="h-[120px]" />
+	// ⭐ mask style을 동적으로 적용하는 객체
+	const maskStyles = !isMobile ? {
+		maskImage: getMaskImage(),
+		WebkitMaskImage: getMaskImage(),
+		transition: 'mask-image 0.5s ease-out, -webkit-mask-image 0.5s ease-out',
+	} : {}; // 모바일이면 빈 객체를 반환하여 스타일 적용 안 함
 
+	return (
+		<div id="projects" className="md:px-[5%] pt-[80px] ml:pt-[150px]">
 			{/* Title Section */}
 			<AnimationWrapper animationType={"scale"} delay="0.3s">
-				<div className="ml-[20px] font-bold text-6xl text-white md:text-7xl md:text-center md:ml-0">
+				<div className="font-bruno ml-[20px] font-bold text-4xl text-custom-purple md:text-7xl md:text-center md:ml-0">
 					<h1>Projects</h1>
 				</div>
 			</AnimationWrapper>
 
 			{/* Tabs Section */}
 			<AnimationWrapper animationType={"scale"} delay="1s">
-				<div className="flex justify-center space-x-2 md:space-x-4 mt-[50px] mb-10">
+				<div className="flex justify-center space-x-2 md:space-x-4 mt-5 transition-all duration-300 ease-in-out">
 					{tabs.map((tab) => (
 						<TabButton
 							key={tab}
@@ -70,10 +156,11 @@ const Projects = () => {
 			</AnimationWrapper>
 
 			{/* Projects Container */}
-			<AnimationWrapper animationType={"translateXFromRight"} delay="0.3s">
+			<AnimationWrapper animationType={"translateXFromLeft"} delay="0.3s">
 				<div
 					ref={containerRef}
-					className="flex gap-6 overflow-x-auto scrollbar-hide p-4 h-150 mx-auto md:max-w-[80%] no-scrollbar"
+					className="mb-5 p-10 flex gap-6 overflow-x-auto mx-auto w-[80%] no-scrollbar scrollbar-hide"
+					style={maskStyles}
 				>
 					{filteredProjects.map((project) => (
 						<ProjectCard key={project.id} project={project} onClick={() => setSelectedProject(project)} />
@@ -81,10 +168,37 @@ const Projects = () => {
 				</div>
 			</AnimationWrapper>
 
-			<div className="relative">
-				<ScrollButton direction="left" onClick={scrollLeft} />
-				<ScrollButton direction="right" onClick={scrollRight} />
-			</div>
+			{/* Scroll Buttons */}
+			{!isMobile && (
+				<div className="relative">
+					<div
+						className={`
+              absolute top-1/2 -translate-y-1/2 left-0
+              transition-opacity duration-300 ease-in-out
+              ${isAtStart ? 'opacity-0 pointer-events-none' : 'opacity-100'}
+            `}
+					>
+						<ScrollButton direction="left" onClick={scrollLeft} />
+					</div>
+					<div
+						className={`
+              absolute top-1/2 -translate-y-1/2 right-0
+              transition-opacity duration-300 ease-in-out
+              ${isAtEnd ? 'opacity-0 pointer-events-none' : 'opacity-100'}
+            `}
+					>
+						<ScrollButton direction="right" onClick={scrollRight} />
+					</div>
+				</div>
+			)}
+
+			{/* Scroll Indicator (Mobile Only) */}
+			{isMobile && (
+				<ScrollIndicator
+					itemsCount={filteredProjects.length}
+					activeIndex={activeIndex}
+				/>
+			)}
 
 			{/* Modal */}
 			{selectedProject && (
@@ -93,88 +207,5 @@ const Projects = () => {
 		</div>
 	);
 };
-
-// Tab Button Component
-interface TabButtonProps {
-	tab: string;
-	activeTab: string;
-	setActiveTab: (tab: string) => void;
-}
-
-const TabButton: React.FC<TabButtonProps> = ({ tab, activeTab, setActiveTab }) => (
-	<button
-		className={`px-4 py-2 text-lg font-medium rounded-xl transition cursor-pointer ${activeTab === tab
-			? "bg-gradient-to-t from-[#7761a9] to-[#7761a97d] backdrop-blur-lg text-white"
-			: "bg-gradient-to-t from-[#d9d9d950] to-[#d9d9d91c] backdrop-blur-lg"
-			}`}
-		onClick={() => setActiveTab(tab)}
-	>
-		{tab.toUpperCase()}
-	</button>
-);
-
-// Scroll Button Component
-interface ScrollButtonProps {
-	direction: "left" | "right";
-	onClick: () => void;
-}
-
-
-const ScrollButton: React.FC<ScrollButtonProps> = ({ direction, onClick }) => (
-	<button
-		className={`w-[150px] h-[70px] flex items-center justify-center absolute mt-[20px]
-      ${direction === "left" ? "left-[0px] md:left-[10px] xl:left-[0px]" : "right-[0px] md:right-[10px] xl:-right-[0px]"} transform -translate-y-1/2 p-2 
-      cursor-pointer rounded-full z-30 transition-all duration-300
-      text-white bg-white/20 shadow-lg ring-1 ring-black/5
-			md:w-[70px] md:h-[100px] md:bottom-[200px] 
-      xl:w-[70px] xl:h-[100px] xl:bottom-[200px] xl:text-violet-300 
-      active:bg-violet-400 xl:hover:bg-violet-400 xl:hover:text-white`}
-		onClick={onClick}
-	>
-		{direction === "left" ? <IoIosArrowBack size={30} /> : <IoIosArrowForward size={30} />}
-	</button>
-);
-
-// Project Card Component
-interface ProjectCardProps {
-	project: Project;
-	onClick: () => void;
-}
-
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => (
-	<div className="relative group cursor-pointer" onClick={onClick}>
-		<div className="absolute -inset-1 bg-gradient-to-r from-[#d9d9d91c] to-[#d9d9d950]rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
-		<div className="flex flex-col w-80 min-w-[360px] h-[96%] bg-gradient-to-t from-[#d9d9d91c] to-[#d9d9d950] backdrop-blur-lg rounded-3xl overflow-hidden cursor-pointer transition transform hover:scale-105 hover:z-10">
-			<div className="min-h-85 p-5 relative overflow-hidden">
-				{project.image ? (
-					<img
-						src={project.image}
-						alt="Project"
-						className="w-full h-[300px] object-contain bg-white rounded-2xl p-5"
-					/>
-				) : (
-					<div className="w-full h-[300px] bg-white rounded-2xl p-5 flex items-center justify-center">
-						<span className="text-xl font-bold text-gray-700">{project.title}</span>
-					</div>
-				)}
-			</div>
-			<div className="p-4">
-				<h2 className="text-3xl font-bold text-gray-200 min-h-20 flex justify-center items-center text-center" dangerouslySetInnerHTML={{ __html: project.title }} />
-				<div className="min-h-20">
-					<div className="flex flex-wrap gap-2 mt-2 justify-center">
-						{project.technologies.map((tech) => (
-							<span
-								key={tech}
-								className="px-3 py-0.5 text-xg text-white bg-violet-500 font-regular rounded-lg"
-							>
-								{tech}
-							</span>
-						))}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-);
 
 export default Projects;

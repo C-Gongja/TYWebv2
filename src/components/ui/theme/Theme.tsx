@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
 
 type Theme = 'light' | 'dark';
 
@@ -38,16 +39,16 @@ const ThemeToggle = () => {
 	return (
 		<button
 			onClick={toggleTheme}
-			className="relative w-20 h-10 bg-[--theme-bg] rounded-full px-1 flex items-center transition-colors duration-300"
+			className="relative w-20 h-10 bg-[var(--theme-light-dark)] inset-shadow-lg rounded-full px-1 flex items-center transform transition-all duration-500 "
 			aria-label="Toggle theme"
 		>
 			<div
-				className={`absolute left-1 top-1 w-8 h-8 rounded-full shadow-md transform transition-transform duration-300 
-					${theme === 'light' ? 'translate-x-0 bg-maincolor ' : 'translate-x-10 dark:bg-gray-800'}`}
+				className={`absolute left-1 top-1 w-8 h-8 rounded-full shadow-md transform transition-transform duration-500 
+					${theme === 'light' ? 'translate-x-0 bg-white ' : 'translate-x-10 bg-gray-800'}`}
 			/>
-			<div className="flex justify-between w-full z-10 text-xl px-[3px] lg:px-[6px] text-gray-700 dark:text-gray-200">
-				<span>☀️</span>
-				<span>🌙</span>
+			<div className="flex justify-between w-full z-10 text-xl px-[6px]">
+				<IoSunnyOutline className='text-yellow-300 dark:text-gray-700' />
+				<IoMoonOutline className='text-gray-200 dark:text-yellow-300' />
 			</div>
 		</button>
 	);

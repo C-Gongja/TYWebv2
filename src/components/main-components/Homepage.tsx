@@ -4,37 +4,29 @@ import LogoThree from "./Logo3D";
 const HomePage = () => {
 	const url = "./assest/images/logo/3d_logo.stl";
 	return (
-		<div id="home" className="pt-[150px] pb-[80px] px-[40px] bg-transparent no-scrollbar">
-			<div className="grid grid-rows-2 items-center max-w-full h-[70vh] p-0
-			md:mb-[50px]
-			xl:grid-cols-[1.3fr_1fr] xl:grid-rows-none">
-				<div className=" mt-[5rem] flex flex-col order-1
-				md:ml-[50px] 
-				lg:ml-[200px] lg:mb-[150px]">
-					<h1 className="text-5xl font-bold text-violet-400
-					md:text-8xl 
-					lg:text-5xl lg:!text-[120px] "
-					>
+		<div id="home" className="h-svh pt-[80px] md:pt-[120px] xl:pt-[250px] mx-[15%] bg-transparent no-scrollbar">
+			<div className="flex flex-col mt-[250px] xl:mt-auto items-center xl:items-start max-w-full h-auto xl:h-[80%] z-10 pointer-events-auto">
+				{/* 텍스트 영역 */}
+				<div className="flex flex-col z-10">
+					<h1 className="font-orbitron font-bold text-custom-purple text-[26pt] text-center xl:text-left 
+          lg:text-[60pt] xl:text-[100px]">
 						Taeyoon Kim
 					</h1>
-					<h2 className="ml-1 mt-5 text-3xl font-semibold text-cyan-400 
-					md:text-5xl
-					lg:text-[70px] lg:ml-4"
-					>
+					<h2 className="font-bruno font-semibold text-custom-mint text-[18pt] text-center xl:text-left 
+          lg:text-[30pt] xl:text-[50px]">
 						a Software Engineer
 					</h2>
-					<p className="ml-2 mt-4 text-xl text-gray-300 break-words
-					md:text-lg
-					lg:ml-5 lg:text-xl lg:text-[32px] lg:mt-[30px]">
+					<p className="text-[var(--text-main)] break-words text-[12pt] text-center xl:text-left 
+          lg:text-[20pt] xl:text-[25px]">
 						I love to solve complex problems and make them into real products. <br />
 						Also, I love to learn new things and implement them into real projects.
 					</p>
 				</div>
-				{/* <div className="absolute right-[150px] h-[200px] w-[500px] bg-cyan-400 transform skew-y-12 opacity-70" /> */}
-
-				<div className="xl:order-2 flex justify-center items-center">
-					<LogoThree url={url} />
-				</div>
+				{/* LogoThree 영역 */}
+			</div>
+			<div className="absolute top-[15%] md:top-[10%] right-[0%] w-[100%] md:right-[25%] md:w-[50%] h-[300px] md:h-[400px]
+				xl:right-0 xl:h-[70%] xl:w-[50%] z-0">
+				<LogoThree url={url} />
 			</div>
 		</div>
 	);

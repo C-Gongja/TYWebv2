@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Orbitron:wght@400..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@plugin "daisyui";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -14,13 +17,17 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
-	--theme-bg: #ffffff;
+	--theme-custom-purple: #a37cf0;
+
+	--theme-bg: #f6faff;
+	--theme-bg-opposite: #1e202c;
+	--theme-light-dark: #31323e;
 
 	--bg-main: #ffffff;
-	--text-main: #646cff;
+	--text-main: #171717;
 	--border-main: #171717;
 
-	--project-bg: #4952fe;
+	--project-bg: #bgc0d1;
 	--project-shadow: [inset_0px_0px_45px_-10px_#110826];
 
 	--bg-nav: #e5e7eb;
@@ -32,10 +39,14 @@
 }
 
 .dark {
-	--theme-bg: #646cff;
+	--theme-custom-purple: #60519b;
+
+	--theme-bg: #1e202c;
+	--theme-bg-opposite: #f6faff;
+	--theme-light-dark: #f6faffbe;
 
 	--bg-main: #1a1a1a;
-	--text-main: #646cff;
+	--text-main: #d1d7e0;
 	--border-main: #f0f0f0;
 
 	--project-bg: #321a68;
@@ -87,6 +98,13 @@ body {
 		scrollbar-width: none;
 		/* Firefox */
 	}
+
+	.custom-shadow {
+		/* box-shadow: 0px 0px 15px 8px rgba(61, 176, 215, 0.6), 0px 0px 15px 8px rgba(96, 81, 155, 0.6), */
+		box-shadow: 8px 8px 18px 3px rgba(61, 176, 215, 0.6), -8px -8px 18px 3px rgba(96, 81, 155, 0.6);
+		/* box-shadow: 0px -10px 15px -3px rgba(255, 0, 0, 0.6), 0px 10px 15px -3px rgba(0, 0, 255, 0.6) */
+	}
+
 }
 
 @keyframes slide-fade-in-dropdown-animation {

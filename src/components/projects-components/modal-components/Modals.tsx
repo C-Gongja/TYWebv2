@@ -8,28 +8,28 @@ interface ModalProps {
 
 function ModalTitle({ project, onClose }: ModalProps) {
 	return (
-		<div className="">
-			<div className="px-[20px] flex flex-row gap-5 items-center">
+		<div className="text-[var(--text-main)]">
+			<div className="flex flex-row gap-5 items-center">
 				{project.image && (
 					<img
 						src={project.image}
 						alt={project.title}
-						className="w-[60px] h-[60px] rounded-full shadow-lg"
+						className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] rounded-full shadow-lg bg-[var(--theme-bg-opposite)]"
 					/>
 				)}
-				<h2 className="text-3xl md:text-2xl lg:text-4xl font-bold text-black">{project.modaltitle}</h2>
+				<h2 className="text-3xl md:text-2xl lg:text-4xl font-bold ">{project.modaltitle}</h2>
 				{project.githublink && (
-					<a href={project.githublink} target="_blank" className="hidden md:block">
+					<a href={project.githublink} target="_blank" className="hidden md:block ">
 						<img
 							src="./assest/images/github-mark/github-mark.svg"
 							alt="Button Image"
-							className="max-w-[40px] max-h-[40px] p-[2px] md:max-w-[50px] md:max-h-[50px] md:object-contain transition transform hover:scale-105 rounded-full"
+							className="bg-[white] max-w-[40px] max-h-[40px] p-[2px] md:max-w-[50px] md:max-h-[50px] md:object-contain transition transform hover:scale-105 rounded-full"
 						/>
 					</a>
 				)}
 			</div>
 			<button
-				className=" absolute top-2 right-3 text-black text-2xl cursor-pointer"
+				className=" absolute top-5 right-5 text-2xl cursor-pointer"
 				onClick={onClose}
 			>
 				✕
@@ -40,28 +40,32 @@ function ModalTitle({ project, onClose }: ModalProps) {
 
 function ModalBody({ project }: ModalProps) {
 	return (
-		<div className="p-2 md:p-6 text-black max-w-full mx-auto">
+		<div className="p-2 md:p-6 text-[var(--text-main)] max-w-full mx-auto">
 			{/* Intro */}
-			{project.description.Intro && (
-				<p className="text-lg text-black mb-6">{project.description.Intro}</p>
+			{project.description.Intro && Array.isArray(project.description.Intro) && (
+				<div className="text-lg mb-6 space-y-4">
+					{project.description.Intro.map((paragraph, index) => (
+						<p key={index}>{paragraph}</p>
+					))}
+				</div>
 			)}
 
 			{/* 상세 설명 */}
 			{project.description.body.map((section, index) => (
-				<div key={index} className="mb-6">
+				<div key={index} className="mb-6 text-[var(--text-main)]">
 					{/* 섹션 제목 */}
 					<h2 className="text-2xl font-semibold mb-3">{section.title}</h2>
 
-					<ul className="list-disc list-inside space-y-3 text-black">
+					<ul className="list-disc list-inside space-y-3">
 						{section.bullets.map((bullet, idx) => (
 							<li key={idx} className="ml-4">
 								{/* `subtitle`이 있는 경우 */}
 								{typeof bullet === "object" ? (
 									<>
 										<span className="font-semibold text-lg"> {bullet.subtitle}</span>
-										<ul className="list-circle list-inside ml-6 text-black">
+										<ul className="list-circle list-inside ml-6">
 											{bullet.subBullets.map((subBullet, subIdx) => (
-												<li key={subIdx}>{subBullet}</li>
+												<li key={subIdx}>- {subBullet}</li>
 											))}
 										</ul>
 									</>
@@ -91,11 +95,11 @@ function Tags({ project }: ModalProps) {
 
 function Demo({ project }: ModalProps) {
 	return (
-		< >
+		<div className="flex flex-col gap-5 text-[var(--text-main)]">
 			{project.attach && project.attach.length > 0 && (
 				project.attach.map((item, index) => (
 					<div key={index}>
-						<h2 id="" className="text-black text-xl">{item.title}</h2>
+						<h2 id="" className=" text-2xl mb-5">{item.title}</h2>
 						<img src={item.src} alt="" />
 					</div>
 				))
@@ -103,7 +107,7 @@ function Demo({ project }: ModalProps) {
 
 			{project.demo.length > 0 && (
 				<div>
-					<h1 className="text-black text-xl">Demo</h1>
+					<h1 className="text-2xl mb-5">Demo</h1>
 					{project.demo.map((demovid, index) => (
 						<video className="rounded-xl cursor-pointer" controls>
 							<source key={index} src={demovid} type="video/mp4" />
@@ -112,7 +116,7 @@ function Demo({ project }: ModalProps) {
 					))}
 				</div>
 			)}
-		</>
+		</div>
 	);
 }
 
@@ -136,25 +140,36 @@ function ProjectModal({ project, onClose }: ModalProps) {
 			onClick={onClose}
 		>
 			<div
-				className="relative w-[90%] max-h-[70%] md:max-w-[65%] p-6 rounded-2xl bg-white backdrop-blur-xl shadow-xl
+				className="relative w-[90%] max-h-[70vh] lg:w-[80%] lg:max-h-[80vh] p-5 lg:p-10 rounded-2xl bg-[var(--theme-bg)] backdrop-blur-xl shadow-xl
         transition-discrete starting-style:open:opacity-0
-				grid grid-cols-1 grid-rows-[0.1fr_1fr_1fr] 
-				lg:grid-cols-2 lg:grid-rows-[0.1fr_1fr] gap-2"
-				onClick={(e) => e.stopPropagation()} // 모달 내부 클릭시 닫히지 않도록
-			// style={{ maxHeight: "85vh", maxWidth: "90vw" }} // 모달 최대 높이 제한
+        overflow-y-auto no-scrollbar
+				flex flex-col
+        lg:grid lgStrengthen grid-cols-2 lg:grid-rows-[0.1fr_1fr] gap-2"
+				onClick={(e) => e.stopPropagation()}
 			>
-				<div className="col-span-2">
+				{/* 모달 제목 */}
+				<div className="lg:col-span-2">
 					<ModalTitle project={project} onClose={onClose} />
 				</div>
-				<div className="pr-4 max-h-[68vh] overflow-y-auto no-scrollbar row-start-3 lg:row-start-2 mt-5 scrollbar-hidden">
-					<ModalBody project={project} />
-				</div>
-				<div className="flex flex-col pr-4 max-h-[68vh]  overflow-y-auto no-scrollbar row-start-2 mt-5 scrollbar-hidden">
+				{/* 모바일: 세로 배치, 데스크톱: 그리드의 첫 번째 열 */}
+				<div
+					className="flex flex-col pr-4 lg:overflow-y-auto no-scrollbar 
+        lg:row-start-2 lg:mt-5 scrollbar-hidden
+        md:flex md:flex-col"
+				>
 					<Tags project={project} />
 					<Demo project={project} />
 				</div>
+				{/* 모바일: 세로 배치, 데스크톱: 그리드의 두 번째 열 */}
+				<div
+					className="pr-4 lg:overflow-y-auto no-scrollbar 
+        lg:row-start-2 lg:mt-5 scrollbar-hidden
+        md:flex md:flex-col"
+				>
+					<ModalBody project={project} />
+				</div>
 			</div>
-		</div >
+		</div>
 	);
 }
 

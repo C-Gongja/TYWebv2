@@ -25,11 +25,11 @@ export default function AnimationWrapper({
 			opacity: isInView ? 1 : 0,
 		},
 		translateYFromTop: {
-			transform: isInView ? "none" : "translateX(100vh)",
+			transform: isInView ? "none" : "translateY(100vh)",
 			opacity: isInView ? 1 : 0,
 		},
 		translateYFromBottom: {
-			transform: isInView ? "none" : "translateX(-100vh)",
+			transform: isInView ? "none" : "translateY(-100vh)",
 			opacity: isInView ? 1 : 0,
 		},
 		scale: {

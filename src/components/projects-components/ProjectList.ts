@@ -33,13 +33,124 @@ export default interface ProjectsProps {
 
 export const projects = [
 	{
-		id: 0,
+		id: 8,
+		category: "web",
+		title: "Sharavel",
+		tabtitle: "Sharavel",
+		modaltitle: "Sharavel",
+		image: null,
+		technologies: ["Next.js", "Springboot", "GCP", "AWS", "PostgreSQL", "zustand"],
+		description: {
+			Intro: [
+				"Sharavel is your digital travel companion that transforms fleeting moments into lasting memories. Every sunrise in a foreign city, every conversation with a stranger, every unexpected detour that changed your perspective—these are the heartbeats of human growth.",
+				"We believe that the most profound transformations happen when we step outside our comfort zones and embrace the beautiful uncertainty of exploration. This isn't just another travel app.",
+				"It's a canvas for your curiosity, a sanctuary for your wanderlust, and a bridge connecting kindred spirits who understand that the best stories are written with muddy boots and open hearts.",
+			],
+			body: [
+				{
+					title: "Capture the magic of discovery. Share the thrill of the unknown.",
+					bullets: [
+					]
+				},
+				{
+					title: "What Makes Sharavel Special",
+					bullets: [
+						{
+							subtitle: "Current Features",
+							subBullets: [
+								"Seamless Social Integration - Jump in instantly with your favorite social platform",
+								"Smart Trip Cloning - Discover amazing itineraries and make them uniquely yours with personal touches",
+								"Intelligent Location Mapping - Add exciting destinations and watch your country count grow automatically",
+								"Rich Storytelling Tools - Bring your adventures to life with photos, descriptions, and personal reflections",
+								"Community Engagement - Connect with fellow explorers through comments and meaningful interactions",
+								"Explorer Following - Build your network of inspiring travelers and discover new perspectives",
+								"Personal Growth Tracking - Visualize your journey and celebrate your expanding horizons",
+							]
+						},
+						{
+							subtitle: "Coming Soon",
+							subBullets: [
+								"Smart Discovery Tags - Find adventures that match your soul",
+								"Powerful Search Engine - Uncover hidden gems and forgotten stories",
+								"Interactive Exploration Map - Your personal atlas of growth and discovery",
+								"Personalized Recommendations - AI-powered suggestions based on your unique travel DNA",
+								"And much more...",
+							]
+						},
+					]
+				},
+				{
+					title: "Future Features",
+					bullets: [
+						`Tags`,
+						`Search`,
+						`"Explore Log Map" on the profile page`,
+						`Recommandation algorithm`,
+						`etc.`,
+					]
+				},
+			],
+		},
+		githublink: "",
+		attach: [],
+		demo: [null]
+	},
+	{
+		id: 7,
+		category: "web",
+		title: "HYS 25 F/W popup event",
+		tabtitle: "HYS 25 F/W popup event",
+		modaltitle: "HYS 25 F/W Popup Event Custom ID Card",
+		image: "./assest/files/experience/hys/logo.png",
+		technologies: ["React.js", "Three.js", "Firebase", "Firebase Storage", "Firestore", "Firebase Authentication", "Firebase Functions", "Firebase Hosting"],
+		description: {
+			Intro: `Built a full-featured web application from scratch using React.js and Firebase services for a high-traffic seasonal apparel pop-up event.`,
+
+			body: [
+				{
+					title: "Roles",
+					bullets: [
+						`Developed a scalable web application capable of handling high traffic within a very limited budget.`,
+						`Implemented a highly design-intensive front-end, translating complex UI/UX mockups into responsive, pixel-perfect components.`,
+						`Collaborated closely with UI/UX designers to optimize user interaction and deliver an intuitive, engaging experience.`,
+						`Designed and built a role-based admin panel with tailored interfaces and functionalities for both designers and administrators.`,
+					]
+				},
+				{
+					title: "Features",
+					bullets: [
+						{
+							subtitle: "Customer",
+							subBullets: [
+								`Create a custom 3D avatar and personalized ID card.`,
+								`Save personalized avatar and/or ID card for later use.`,
+							]
+						},
+						{
+							subtitle: "Manager",
+							subBullets: [
+								`Access and manage user-generated ID cards.`,
+								`Print ID cards for physical distribution.`,
+								`Add or remove admin users.`,
+								`Manage avatar assets through a dedicated avatar management tool.`,
+							]
+						},
+					]
+				},
+			]
+		},
+		githublink: "",
+		attach: [],
+		demo: [null]
+	},
+	{
+		id: 6,
 		category: "web",
 		title: "3D Character Generator",
 		tabtitle: "3D Character Generator",
 		modaltitle: "3D Character Generator",
 		image: "./assest/files/projects/3d_char/3d_char_logo.png",
-		technologies: ["TypeScript", "React", "Tailwindcss", "Three.js", "Node.js", "PostgreSQL", "GCS"],
+		technologies: ["React", "Three.js", "TypeScript", "Tailwindcss", "Node.js", "PostgreSQL", "GCS"],
 		description: {
 			Intro: `A prototype web application enabling interactive 3D character customization.`,
 			body: [
@@ -71,7 +182,7 @@ export const projects = [
 		demo: ["./assest/files/projects/3d_char/3d_char.mp4"]
 	},
 	{
-		id: 1,
+		id: 5,
 		category: "ai",
 		title: "F1-tenth <br> Autonomous Race Car",
 		tabtitle: "F1-tenth",
@@ -151,7 +262,7 @@ export const projects = [
 		demo: ["./assest/files/projects/f1/f1_demo.mp4"]
 	},
 	{
-		id: 2,
+		id: 4,
 		category: "ai",
 		title: "Connect 4 <br> Game AI",
 		tabtitle: "Connect 4 AI",
@@ -234,7 +345,7 @@ export const projects = [
 		demo: ["./assest/files/projects/hgr/hgr_youtube_controller_demo.mp4"]
 	},
 	{
-		id: 4,
+		id: 2,
 		category: "web",
 		title: "X Clone",
 		tabtitle: "X Clone",
@@ -266,7 +377,7 @@ export const projects = [
 		demo: ["./assest/files/projects/X_clone/X_clone_demo.mp4"]
 	},
 	{
-		id: 5,
+		id: 1,
 		category: "software",
 		title: "Enigma Machine",
 		tabtitle: "Enigma Machine",
@@ -301,7 +412,7 @@ export const projects = [
 		demo: ["./assest/files/projects/enigma/Enigma_demo.mov"]
 	},
 	{
-		id: 6,
+		id: 0,
 		category: "software",
 		title: "BigNum Calculator",
 		tabtitle: "BigNum Calculator",
@@ -331,32 +442,4 @@ export const projects = [
 		attach: [],
 		demo: []
 	},
-	// {
-	// 	id: 6,
-	// 	category: "ai",
-	// 	title: "Music Classifier",
-	// 	image: null,
-	// 	technologies: ["Python", "Tensorflow", "html/css"],
-	// 	description: {
-	// 		Intro: ``,
-
-	// 		body: [
-	// 			{
-	// 				title: null,
-	// 				bullets: [
-	// 					{
-	// 						subtitle: null,
-	// 						subBullets:
-	// 							[
-	// 								``,
-	// 							]
-	// 					},
-	// 				]
-	// 			},
-	// 		]
-	// 	},
-	// 	githublink: "https://github.com/C-Gongja/Music-Classifier",
-	// 	attach: [],
-	// 	demo: [null]
-	// },
 ];

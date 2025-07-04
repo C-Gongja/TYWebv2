@@ -51,7 +51,7 @@ export const ExperienceList = [
 	},
 	{
 		companyImg: "./assest/files/experience/hys/logo.png",
-		jobTitle: "Software Engineer",
+		jobTitle: "Full-stack Developer",
 		company: "HugYourSkin",
 		jobType: "Contract",
 		year: "2025",
