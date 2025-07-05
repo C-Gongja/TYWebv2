@@ -135,7 +135,7 @@ const Projects = () => {
 	return (
 		<div id="projects" className="md:px-[5%] pt-[80px] ml:pt-[150px]">
 			{/* Title Section */}
-			<AnimationWrapper animationType={"scale"} delay="0.3s">
+			<AnimationWrapper animationType={"scale"} delay="0.5s">
 				<div className="font-bruno ml-[20px] font-bold text-4xl text-custom-purple md:text-7xl md:text-center md:ml-0">
 					<h1>Projects</h1>
 				</div>

@@ -31,12 +31,12 @@ function ProjectModal({ project, onClose }: ModalProps) {
 		>
 			<div
 				className="relative w-[90%] max-h-[70vh] lg:w-[80%] lg:max-h-[85vh] bg-[var(--theme-bg)] p-6 
-				lg:p-10 rounded-2xl shadow-xl transition-opacity duration-300 overflow-hidden"
+				rounded-2xl shadow-xl transition-opacity duration-300 overflow-hidden"
 				onClick={(e) => e.stopPropagation()}
 			>
 				{/* Close Button */}
 				<button
-					className="absolute top-3 right-3 text-2xl text-[var(--text-main)] hover:text-red-400 transition"
+					className="absolute top-3 right-3 text-2xl text-[var(--text-main)] hover:text-custom-purple transition"
 					onClick={onClose}
 				>
 					✕
@@ -53,13 +53,13 @@ function ProjectModal({ project, onClose }: ModalProps) {
 					</div>
 
 					{/* Left Side Content */}
-					<div className="flex flex-col gap-4 overflow-visible lg:overflow-y-auto lg:pr-2 lg:max-h-[80vh] lg:no-scrollbar ">
+					<div className="flex flex-col gap-4 overflow-visible lg:overflow-y-auto lg:max-h-[80vh] lg:no-scrollbar p-5">
 						<Tags project={project} />
 						<Demo project={project} />
 					</div>
 
 					{/* Right Side Content */}
-					<div className="flex flex-col gap-4 overflow-visible lg:overflow-y-auto lg:pr-2 lg:max-h-[80vh] lg:no-scrollbar">
+					<div className="flex flex-col gap-4 overflow-visible lg:overflow-y-auto lg:max-h-[80vh] lg:no-scrollbar p-5">
 						<ModalBody project={project} />
 					</div>
 				</div>

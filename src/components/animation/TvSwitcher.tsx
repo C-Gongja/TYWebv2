@@ -17,7 +17,7 @@ const TvSwitcher = () => {
 	}, []);
 
 	return (
-		<div className="fixed inset-0 z-[9999] bg-[#1e202c] flex items-center justify-center overflow-hidden">
+		<div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden">
 			{/* White expanding bar */}
 			<div
 				className={clsx(

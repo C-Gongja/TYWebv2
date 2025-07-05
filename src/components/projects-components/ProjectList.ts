@@ -13,6 +13,11 @@ export interface ProjectAttach {
 	src: string;
 }
 
+export interface ProjectLink {
+	name: string;
+	url: string;
+}
+
 export interface Project {
 	id: number;
 	category: string;
@@ -22,7 +27,7 @@ export interface Project {
 	image: string | null;
 	technologies: string[];
 	description: ProjectDescription;
-	githublink: string | null;
+	link: ProjectLink[] | null;
 	attach: ProjectAttach[] | null;
 	demo: string[] | null;
 }
@@ -91,7 +96,7 @@ export const projects = [
 				},
 			],
 		},
-		githublink: "",
+		link: [],
 		attach: [],
 		demo: []
 	},
@@ -139,9 +144,16 @@ export const projects = [
 				},
 			]
 		},
-		githublink: "",
+		link: [
+			{
+				name: "hys", url: "https://en.hugyourskin.kr/"
+			}
+		],
 		attach: [],
-		demo: []
+		demo: [
+			"./assest/files/projects/hys/hys-demo0.mp4",
+			"./assest/files/projects/hys/hys-demo1.mp4"
+		]
 	},
 	{
 		id: 6,
@@ -177,7 +189,7 @@ export const projects = [
 				},
 			],
 		},
-		githublink: "",
+		link: [],
 		attach: [],
 		demo: ["./assest/files/projects/3d_char/3d_char.mp4"]
 	},
@@ -252,7 +264,7 @@ export const projects = [
 				}
 			],
 		},
-		githublink: "https://github.com/C-Gongja/f1tenth_gym_ros",
+		link: [{ name: "github", url: "https://github.com/C-Gongja/f1tenth_gym_ros" }],
 		attach: [
 			{
 				title: "Hardware",
@@ -285,7 +297,7 @@ export const projects = [
 				},
 			]
 		},
-		githublink: "https://github.com/C-Gongja/connect_4_ai",
+		link: [{ name: "github", url: "https://github.com/C-Gongja/connect_4_ai" }],
 		attach: [],
 		demo: ["./assest/files/projects/c4/c4_demo.mp4"]
 	},
@@ -340,7 +352,7 @@ export const projects = [
 				},
 			]
 		},
-		githublink: "https://github.com/C-Gongja/hgd_youtube_controller",
+		link: [{ name: "github", url: "https://github.com/C-Gongja/hgd_youtube_controller" }],
 		attach: [],
 		demo: ["./assest/files/projects/hgr/hgr_youtube_controller_demo.mp4"]
 	},
@@ -372,7 +384,7 @@ export const projects = [
 				},
 			]
 		},
-		githublink: "https://github.com/C-Gongja/Twitter-Clone",
+		link: [{ name: "github", url: "https://github.com/C-Gongja/Twitter-Clone" }],
 		attach: [],
 		demo: ["./assest/files/projects/X_clone/X_clone_demo.mp4"]
 	},
@@ -407,7 +419,7 @@ export const projects = [
 				},
 			]
 		},
-		githublink: "https://github.com/C-Gongja/Enigma-Machine",
+		link: [{ name: "github", url: "https://github.com/C-Gongja/Enigma-Machine" }],
 		attach: [],
 		demo: ["./assest/files/projects/enigma/Enigma_demo.mov"]
 	},
@@ -438,7 +450,7 @@ export const projects = [
 				},
 			]
 		},
-		githublink: "https://github.com/C-Gongja/BigNum-Calculator",
+		link: [{ name: "github", url: "https://github.com/C-Gongja/BigNum-Calculator", }],
 		attach: [],
 		demo: []
 	},
