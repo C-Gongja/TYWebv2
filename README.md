@@ -1,54 +1,18 @@
-# React + TypeScript + Vite
+# Taeyoon Kim Web Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔥 Welcome to [TYWebV2](https://c-gongja.github.io/TYWebv2/) repo!
 
-Currently, two official plugins are available:
+This is a static web application developed by 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+* ![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white)
+* ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-## Expanding the ESLint configuration
+## 🎬 Preview
+![](https://https://github.com/C-Gongja/TYWebv2/tree/main/public/assest/files/gif/web.gif)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-
-# How to deploy React + Vite to Github Pages
-npm run deploy
-
+## ✨ Features
+* __Clean and Minimal Animations:__ Sleek design and intuitive structure that draws attention at a glance.
+* Single Page Layout: Easy-to-navigate one-page design, offering simplicity and elegance.
+* __Modern Tailwind CSS Styling:__ Styled with the Tilawind CSS techniques for vibrant design.
+* __Fully Responsive:__ Optimized for devices of all sizes, from desktops to smartphones.

@@ -32,6 +32,7 @@ function ModalBody({ project }: ModalProps) {
 			{/* Intro */}
 			{project.description.Intro && Array.isArray(project.description.Intro) && (
 				<div className="text-lg mb-6 space-y-4">
+					<h2 className="text-2xl font-semibold mb-3">Intro</h2>
 					{project.description.Intro.map((paragraph, index) => (
 						<p key={index}>{paragraph}</p>
 					))}

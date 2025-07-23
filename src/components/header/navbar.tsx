@@ -5,7 +5,7 @@ import ProjectModal from "../projects-components/modal-components/Modals";
 
 import MobileNavbar from "./MobileNavbar";
 import HamburgerButton from "./HamburgerButton";
-import DesktopNavbar from "./DesktopNavBar";
+import DesktopNavbar from "./DesktopNavbar";
 
 const Navbar = () => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

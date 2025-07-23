@@ -6,7 +6,7 @@ interface ProjectImageProps {
 }
 
 const ProjectImage: React.FC<ProjectImageProps> = ({ image, title }) => (
-	<div className="overflow-hidden bg-white p-5">
+	<div className="overflow-hidden bg-white p-5 pointer-events-none">
 		{image ? (
 			<img
 				src={image}

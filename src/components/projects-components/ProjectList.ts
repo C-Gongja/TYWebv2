@@ -43,7 +43,7 @@ export const projects = [
 		title: "Sharavel",
 		tabtitle: "Sharavel",
 		modaltitle: "Sharavel",
-		image: null,
+		image: "./assest/images/logo/logo-color.PNG",
 		technologies: ["Next.js", "Springboot", "GCP", "AWS", "PostgreSQL", "zustand"],
 		description: {
 			Intro: [
@@ -98,7 +98,7 @@ export const projects = [
 		},
 		link: [],
 		attach: [],
-		demo: []
+		demo: ["./assest/files/projects/sharavel/sharavel.mp4"]
 	},
 	{
 		id: 7,
