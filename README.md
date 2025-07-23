@@ -9,7 +9,7 @@ This is a static web application developed by
 * ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 ## 🎬 Preview
-![](https://https://github.com/C-Gongja/TYWebv2/tree/main/public/assest/files/gif/web.gif)
+![]([https://https://github.com/C-Gongja/TYWebv2/tree/main/public/assest/files/gif/web.gif](https://github.com/C-Gongja/TYWebv2/blob/main/public/assest/files/gif/web.gif))
 
 ## ✨ Features
 * __Clean and Minimal Animations:__ Sleek design and intuitive structure that draws attention at a glance.
