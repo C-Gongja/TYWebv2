@@ -13,6 +13,7 @@ This is a static web application developed by
 
 ## ✨ Features
 * __Clean and Minimal Animations:__ Sleek design and intuitive structure that draws attention at a glance.
-* Single Page Layout: Easy-to-navigate one-page design, offering simplicity and elegance.
-* __Modern Tailwind CSS Styling:__ Styled with the Tilawind CSS techniques for vibrant design.
-* __Fully Responsive:__ Optimized for devices of all sizes, from desktops to smartphones.
+* __Minimal Page Layout:__ Single-page layout with a clean structure.
+* __Modern Tailwind CSS Styling:__ Styled with Tailwind CSS techniques for a vibrant, modern look.
+* __Fully Responsive:__ Optimized for all devices, from desktops to smartphones.
+
